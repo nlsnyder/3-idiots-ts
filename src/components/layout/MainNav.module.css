@@ -1,0 +1,15 @@
+.containerStyle {
+  font-size: 1.8rem;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.list a {
+  text-decoration: none;
+  color: #212529;
+}
