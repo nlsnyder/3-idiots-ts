@@ -13,3 +13,21 @@
   text-decoration: none;
   color: #212529;
 }
+
+.secondaryButton {
+  font-weight: 700;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.7rem;
+  background-color: #fff;
+  color: #212529;
+  border: 0.1rem solid #212529;
+}
+
+.primaryButton {
+  color: #fff;
+  background-color: #0b2272;
+  border: 0.1rem solid #0b2272;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  padding: 0.5rem 0.7rem;
+}
