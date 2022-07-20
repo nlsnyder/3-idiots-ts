@@ -1,10 +1,13 @@
 .containerStyle {
   font-size: 1.8rem;
 }
+.justify {
+  display: flex;
+  justify-content: start;
+}
 
 .list {
   list-style: none;
-  display: flex;
   gap: 2rem;
   align-items: center;
 }
@@ -30,4 +33,9 @@
   border-radius: 0.5rem;
   font-weight: 700;
   padding: 0.5rem 0.7rem;
+}
+
+.icon {
+  color: #000;
+  height: 2.5em;
 }
