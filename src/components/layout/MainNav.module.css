@@ -39,3 +39,27 @@
   color: #000;
   height: 2.5em;
 }
+
+.mobileLink {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.closeNav {
+  color: #fff;
+}
+
+.fixedNav {
+  position: relative;
+  top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.navElement {
+  display: flex;  
+  gap: 1rem;
+  align-items: center;
+}

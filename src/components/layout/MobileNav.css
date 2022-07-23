@@ -1,0 +1,44 @@
+.sidebar {
+  min-width: 25rem;
+  max-width: 25rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  /* top layer */
+  z-index: 9999;
+  background-color: #0b2272;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  /* full screen */
+  width: 100vw;
+  height: 100vh;
+  /* transparent black */
+  background: rgba(0, 0, 0, 0.7);
+  /* middle layer, i.e. appears below the sidebar */
+  z-index: 998;
+  opacity: 0;
+  /* animate the transition */
+  transition: all 0.5s ease-in-out;
+}
+
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#dismiss {
+  width: 3.5rem;
+  height: 3.5rem;
+  position: absolute;
+  /* top right corner of the sidebar */
+  top: 1rem;
+  right: 20rem;
+}
+
+#dismiss:hover {
+  cursor: pointer;
+}
