@@ -1,6 +1,7 @@
 .containerStyle {
   font-size: 1.8rem;
 }
+
 .justify {
   display: flex;
   justify-content: start;
@@ -40,26 +41,43 @@
   height: 2.5em;
 }
 
-.mobileLink {
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.closeNav {
-  color: #fff;
+.mobileIcon {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: inherit !important;
 }
 
 .fixedNav {
   position: relative;
-  top: 3.5rem;
+  top: 4rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.navElement {
+.mobileLink {
+  text-decoration: none;
   display: flex;  
   gap: 1rem;
   align-items: center;
+  width: 25rem;
+  margin: 0.7rem 1.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 1.5rem;
+  color: #fff;
+  transition: all 0.15s;
+}
+
+.mobileLink:hover, .mobileLink:active {
+  background-color: #fff;
+  color: #0b2272 !important;
+}
+
+.mobileNavFooter {
+  border-top: 1px solid #fff;
+  position: relative;
+  top: 4.3rem;
+  right: 0rem;
+  padding: 1rem 3rem;
+  font-size: 1rem;
 }

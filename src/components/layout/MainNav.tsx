@@ -8,11 +8,12 @@ import {
   faUserGroup,
   faEnvelopeOpenText,
   faUnlock,
-  faClipboardCheck,
-  faArrowTurnUp,
+  faClipboardCheck
 } from "@fortawesome/free-solid-svg-icons";
 import { NavLink } from "../../interfaces/interfaces";
 import "./MobileNav.css";
+import { useState } from "react";
+import MobileNav from "./MobileNav";
 
 const navLinks: NavLink[] = [
   { link: "Listen Now", id: 1, href: "/", icon: faHeadphones },
@@ -23,77 +24,72 @@ const navLinks: NavLink[] = [
 ];
 
 const MainNav: React.FC<{}> = (props) => {
-  return (
-    <div className={`container-lg my-2 ${styles.containerStyle}`}>
-      <nav className="navbar navbar-expand-lg pt-3 pb-4">
-        <div
-          className={`col-6 col-md-3 justify-content-start ${styles.justify}`}
-        >
-          <a href="/">
-            <img src={logo} alt="3 idiots logo" />
-          </a>
-        </div>
-        <div
-          className={`d-none d-md-flex col-md-6 justify-content-md-center ${styles.list}`}
-        >
-          <a href="/" className="active nav-link">
-            Listen Now
-          </a>
-          <a href="/" className="nav-link">
-            The Hosts
-          </a>
-          <a href="/contact-us" className="nav-link">
-            Contact Us
-          </a>
-        </div>
-        <div
-          className={`d-none d-md-flex col-md-3 justify-content-md-end ${styles.list}`}
-        >
-          <button type="button" className={styles.secondaryButton}>
-            Log In
-          </button>
-          <button type="button" className={styles.primaryButton}>
-            Sign Up
-          </button>
-        </div>
-        <div className="d-flex d-md-none col-6 justify-content-end">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mainNavbar"
-            aria-controls="mainNavbar"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <FontAwesomeIcon className={styles.icon} icon={faBars} />
-          </button>
-        </div>
-      </nav>
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-      <div className="d-md-none navbar-nav collapse sidebar" id="mainNavbar">
-        <div
-          id="dismiss"
-          data-bs-toggle="collapse"
-          data-bs-target="#mainNavbar"
-          aria-controls="mainNavbar"
-        >
-          <FontAwesomeIcon className={styles.closeNav} icon={faArrowTurnUp} />
-        </div>
-        <div className={styles.fixedNav}>
-          {navLinks.map((nav: NavLink) => {
-            return (
-              <div key={nav.id} className={`py-3 px-5 ${styles.navElement}`}>
-                <FontAwesomeIcon className={styles.closeNav} icon={nav.icon} />
-                <a className={styles.mobileLink} href={nav.href}>
-                  {nav.link}
-                </a>
-              </div>
-            );
-          })}
-        </div>
+  const toggleMobileNavOpen = () => {
+    setMobileNavOpen((prevState: boolean) => !prevState);
+  };
+
+  return (
+    <>
+      <div
+        onClick={toggleMobileNavOpen}
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        className={`d-md-none overlay ${mobileNavOpen ? "active" : ""}`}
+      ></div>
+      <div className={`container-lg my-2 ${styles.containerStyle}`}>
+        <nav className="navbar navbar-expand-lg pt-3 pb-4">
+          <div
+            className={`col-6 col-md-3 justify-content-start ${styles.justify}`}
+          >
+            <a href="/">
+              <img src={logo} alt="3 idiots logo" />
+            </a>
+          </div>
+          <div
+            className={`d-none d-md-flex col-md-6 justify-content-md-center ${styles.list}`}
+          >
+            <a href="/" className="nav-link">
+              Listen Now
+            </a>
+            <a href="/" className="nav-link">
+              The Hosts
+            </a>
+            <a href="/contact-us" className="nav-link">
+              Contact Us
+            </a>
+          </div>
+          <div
+            className={`d-none d-md-flex col-md-3 justify-content-md-end ${styles.list}`}
+          >
+            <button type="button" className={styles.secondaryButton}>
+              Log In
+            </button>
+            <button type="button" className={styles.primaryButton}>
+              Sign Up
+            </button>
+          </div>
+          <div className="d-flex d-md-none col-6 justify-content-end">
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              onClick={toggleMobileNavOpen}
+            >
+              <FontAwesomeIcon className={styles.icon} icon={faBars} />
+            </button>
+          </div>
+        </nav>
+
+        <MobileNav links={navLinks} toggleNav={toggleMobileNavOpen} />
       </div>
-    </div>
+    </>
   );
 };
 

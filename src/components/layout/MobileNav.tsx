@@ -1,34 +1,38 @@
 import React from "react";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faArrowTurnUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "../../interfaces/interfaces";
-import './MobileNav.css';
+import styles from './MainNav.module.css';
+import "./MobileNav.css";
 
-const MobileNav: React.FC<{links: NavLink[]}> = (props) => {
+const MobileNav: React.FC<{ links: NavLink[], toggleNav: () => void }> = (props) => {
   return (
-    <React.Fragment>
-      <nav id="sidebar">
-        <div id="dismiss">
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </div>
-        <div className="sidebar-header">
-          <h3>Navigate</h3>
-        </div>
-        <ul className="list-unstyled components">
-          <p>Nav Heading</p>
-          <li className="active">
-            <a href="/">Listen</a>
-          </li>
-          <li className="active">
-            <a href="/">Hosts</a>
-          </li>
-          <li className="active">
-            <a href="/">Contact Us</a>
-          </li>
-        </ul>
-      </nav>
-      <div className="overlay"></div>
-    </React.Fragment>
+    <div className="d-md-none navbar-nav collapse sidebar white" id="mainNavbar">
+      <div
+        id="dismiss"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNavbar"
+        aria-controls="mainNavbar"
+        onClick={props.toggleNav}
+      >
+        <FontAwesomeIcon className={styles.closeNav} icon={faArrowTurnUp} />
+      </div>
+      <div className={styles.fixedNav}>
+        {props.links.map((nav: NavLink) => {
+          return (
+            <a key={nav.id} className={styles.mobileLink} href={nav.href}>
+              <FontAwesomeIcon className={styles.mobileIcon} icon={nav.icon} />
+              <div>
+                {nav.link}
+              </div>
+            </a>
+          );
+        })}
+      </div>
+      <div className={styles.mobileNavFooter}>
+        <p>3 Idiots and a Star Wars Podcast &copy; 2022</p>
+      </div>
+    </div>
   );
 };
 
