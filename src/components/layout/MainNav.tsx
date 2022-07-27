@@ -42,7 +42,7 @@ const MainNav: React.FC<{}> = (props) => {
       <div className={`container-lg my-2 ${styles.containerStyle}`}>
         <nav className="navbar navbar-expand-lg pt-3 pb-4">
           <div
-            className={`col-6 col-md-3 justify-content-start ${styles.justify}`}
+            className={`col-8 col-sm-6 col-md-3 justify-content-start ${styles.justify}`}
           >
             <a href="/">
               <img src={logo} alt="3 idiots logo" />
@@ -71,7 +71,7 @@ const MainNav: React.FC<{}> = (props) => {
               Sign Up
             </button>
           </div>
-          <div className="d-flex d-md-none col-6 justify-content-end">
+          <div className="d-flex d-md-none col-4 col-sm-6 justify-content-end">
             <button
               className="navbar-toggler"
               type="button"

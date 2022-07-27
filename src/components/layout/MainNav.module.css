@@ -1,5 +1,6 @@
 .containerStyle {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .justify {
@@ -19,21 +20,21 @@
 }
 
 .secondaryButton {
-  font-weight: 700;
-  border-radius: 0.5rem;
-  padding: 0.5rem 0.7rem;
+  border-radius: 2rem;
+  padding: 0.7rem 1rem;
   background-color: #fff;
   color: #212529;
   border: 0.1rem solid #212529;
+  font-weight: 700;
 }
 
 .primaryButton {
   color: #fff;
   background-color: #0b2272;
   border: 0.1rem solid #0b2272;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
+  padding: 0.7rem 1rem;
   font-weight: 700;
-  padding: 0.5rem 0.7rem;
 }
 
 .icon {
@@ -42,14 +43,27 @@
 }
 
 .mobileIcon {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
   color: inherit !important;
+}
+
+.mobileNavHeading {
+  position: relative;
+  top: 4.5rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mobileNavHeading h3 {
+  font-size: 2rem;
+  font-weight: 700;
 }
 
 .fixedNav {
   position: relative;
-  top: 4rem;
+  top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -76,8 +90,8 @@
 .mobileNavFooter {
   border-top: 1px solid #fff;
   position: relative;
-  top: 4.3rem;
+  top: 5.3rem;
   right: 0rem;
   padding: 1rem 3rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }

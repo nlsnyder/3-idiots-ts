@@ -17,6 +17,9 @@ const MobileNav: React.FC<{ links: NavLink[], toggleNav: () => void }> = (props)
       >
         <FontAwesomeIcon className={styles.closeNav} icon={faArrowTurnUp} />
       </div>
+      <div className={styles.mobileNavHeading}>
+        <h3>Side Menu</h3>
+      </div>
       <div className={styles.fixedNav}>
         {props.links.map((nav: NavLink) => {
           return (

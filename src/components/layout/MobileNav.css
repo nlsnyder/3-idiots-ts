@@ -10,6 +10,7 @@
   background-color: #0b2272;
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
+  font-size: 1.6rem;
 }
 
 .overlay {
@@ -39,7 +40,7 @@
   position: absolute;
   /* top right corner of the sidebar */
   top: 1rem;
-  right: 20rem;
+  right: 1rem;
 }
 
 #dismiss:hover {
