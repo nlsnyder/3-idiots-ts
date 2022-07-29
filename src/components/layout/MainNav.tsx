@@ -64,10 +64,10 @@ const MainNav: React.FC<{}> = (props) => {
           <div
             className={`d-none d-md-flex col-md-3 justify-content-md-end ${styles.list}`}
           >
-            <button type="button" className={styles.secondaryButton}>
+            <button type="button" className="secondaryButton">
               Log In
             </button>
-            <button type="button" className={styles.primaryButton}>
+            <button type="button" className="primaryButton">
               Sign Up
             </button>
           </div>

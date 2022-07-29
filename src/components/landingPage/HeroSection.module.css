@@ -1,16 +1,40 @@
 .heroSection {
-  position: relative;
-  flex-direction: column;
-  background-image: url('../../img/Hero-image.jpg');
   height: 90vh;
+  background-image: url('../../img/Stormtrooper-hero.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
   z-index: -1;
+  padding: 0 !important;
 }
 
-.heroOverlay {
-  z-index: 0;
+.heightOverride {
   height: 100%;
-  width: 100%;
-  background: rgba(11, 34, 114, 0.5); 
+}
+
+.heroContainer {
+  padding: 0 0 0 7.5rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  text-align: left;
+}
+
+.heroTitle {
+  font-weight: 700;
+  font-size: 4.2rem;
+}
+
+.heroDescription {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1.5rem;
 }

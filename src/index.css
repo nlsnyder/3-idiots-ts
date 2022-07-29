@@ -9,6 +9,26 @@ html, body {
   font-size: 10px;
 }
 
+.secondaryButton {
+  border-radius: 2rem;
+  padding: 0.8rem 1.1rem;
+  background-color: #fff;
+  color: #212529;
+  border: 0.1rem solid #212529;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.primaryButton {
+  color: #fff;
+  background-color: #0b2272;
+  border: 0.1rem solid #0b2272;
+  border-radius: 2rem;
+  padding: 0.8rem 1.1rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
 /*   FONT SIZE SYSTEM  */
 /* small: 1.4rem
 medium: 1.8rem
