@@ -6,3 +6,9 @@ export interface NavLink {
   href: string,
   icon: IconDefinition
 }
+
+export interface FeatureImage {
+  id: number,
+  img: string,
+  alt: string
+}
