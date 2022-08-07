@@ -1,16 +1,20 @@
 import React from "react";
 import styles from "./HeroSection.module.css";
-import Facebook from '../../img/Facebook-logo.webp';
-import Twitter from '../../img/Twitter-lettering.jpeg';
-import Spotify from '../../img/Spotify-logo.webp';
-import ApplePodcast from '../../img/Apple-Podcast-logo.webp';
 import { FeatureImage } from "../../interfaces/interfaces";
+import {
+  faFacebook,
+  faTwitter,
+  faSpotify,
+} from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faPodcast } from "@fortawesome/free-solid-svg-icons";
 
 const featuredLogos: FeatureImage[] = [
-  {id: 1, img: Facebook, alt: 'Facebook logo'},
-  {id: 2, img: Twitter, alt: 'Twitter logo'},
-  {id: 3, img: Spotify, alt: 'Spotify logo'},
-  {id: 4, img: ApplePodcast, alt: 'Apple Podcasts logo'}
+  { id: 1, icon: faSpotify, alt: "Spotify logo", label: "Spotify" },
+  { id: 2, icon: faPodcast, alt: "Apple Podcasts logo", label: "Apple Podcasts" },
+  { id: 3, icon: faTwitter, alt: "Twitter logo", label: "Twitter" },
+  { id: 4, icon: faFacebook, alt: "Facebook logo", label: "Facebook" },
 ];
 
 const HeroSection: React.FC<{}> = (props) => {
@@ -41,17 +45,22 @@ const HeroSection: React.FC<{}> = (props) => {
           </div>
         </div>
       </div>
-      <div className="container-fluid container-md py-5">
+      <div className="container-fluid container-md pt-5 pb-3">
         <div className="row flex-column justify-content-center align-items-center">
           <div className={`col-12 col-lg-6 ${styles.gap}`}>
             <h2 className={styles.featuredHeading}>Find Us On</h2>
             <div className={styles.featuredLogos}>
               {featuredLogos.map((image) => {
-                if (image.alt === 'Facebook logo') {
-                  return <img key={image.id} src={image.img} alt={image.alt} className={styles.facebookLogo} />
-                } else {
-                  return <img key={image.id} src={image.img} alt={image.alt} />
-                }
+                return (
+                  <div className={`col-3 d-flex flex-column ${styles.featuredSection}`}>
+                    <FontAwesomeIcon
+                      icon={image.icon as IconDefinition}
+                      key={image.id}
+                      className={styles.featuredIcons}
+                    />
+                    <h3 className={styles.featuredSubHeading}>{image.label}</h3>
+                  </div>
+                );
               })}
             </div>
           </div>
