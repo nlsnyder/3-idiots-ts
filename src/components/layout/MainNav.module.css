@@ -59,6 +59,7 @@
 .mobileNavHeading h3 {
   font-size: 2rem;
   font-weight: 700;
+  color: #fff !important;
 }
 
 .fixedNav {

@@ -45,14 +45,14 @@ const HeroSection: React.FC<{}> = (props) => {
           </div>
         </div>
       </div>
-      <div className="container-fluid container-md pt-5 pb-3">
+      <div className="container-fluid container-md py-5">
         <div className="row flex-column justify-content-center align-items-center">
           <div className={`col-12 col-lg-6 ${styles.gap}`}>
             <h2 className={styles.featuredHeading}>Find Us On</h2>
             <div className={styles.featuredLogos}>
               {featuredLogos.map((image) => {
                 return (
-                  <div className={`col-3 d-flex flex-column ${styles.featuredSection}`}>
+                  <div key={image.id} className={`col-3 d-flex flex-column ${styles.featuredSection}`}>
                     <FontAwesomeIcon
                       icon={image.icon as IconDefinition}
                       key={image.id}

@@ -1,0 +1,29 @@
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 4rem 0 2rem 0;
+}
+
+.section-header span {
+  font-weight: 500;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #01457B;
+  margin-bottom: 1rem;
+}
+
+.section-header span::after {
+  display: block;
+	height: 0.2rem;
+	background-color: #01457B;
+	content: "";
+	width: 4rem;
+	margin: 0 auto;
+	margin-top: 1rem;
+}
+
+.section-header h2 {
+  font-size: 3rem;
+  text-align: start;
+}
