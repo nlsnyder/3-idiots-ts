@@ -1,0 +1,16 @@
+.hosts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7.5rem;
+}
+
+@media (min-width: 992px) {
+  .hosts {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

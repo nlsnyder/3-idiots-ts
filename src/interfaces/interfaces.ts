@@ -14,3 +14,27 @@ export interface FeatureImage {
   alt: string,
   label: string
 }
+
+export interface HostImage {
+  src: string,
+  alt: string
+}
+
+export interface HostCharacteristics {
+  primary: string,
+  secondary: string,
+  tertiary: string
+}
+
+export interface HostHobbie {
+  icon: IconDefinition,
+  label: string
+}
+
+export interface HostProfile {
+  key: number
+  image: HostImage,
+  name: string,
+  characteristics: HostCharacteristics
+  hobbies: HostHobbie[]
+}
