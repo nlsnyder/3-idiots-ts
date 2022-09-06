@@ -9,14 +9,10 @@ const Host: React.FC<{ hostProfile: HostProfile }> = (props) => {
 
   return (
     <div
-      className={`col-10 col-md-8 col-lg-4 ${styles.hostContainer}`}
+      className={`col-12 col-sm-10 col-md-8 col-lg-4 ${styles.hostContainer}`}
     >
       <div>
-        <img
-          src={image.src}
-          className={styles.hostPicture}
-          alt={image.alt}
-        />
+        <img src={image.src} className={styles.hostPicture} alt={image.alt} />
       </div>
       <div className="mt-4">
         <h3>{name}</h3>
@@ -43,9 +39,8 @@ const Host: React.FC<{ hostProfile: HostProfile }> = (props) => {
         <ul className={styles.hobbiesList}>
           {hobbies.map((hobbie, index) => {
             return (
-              <li>
+              <li key={index}>
                 <FontAwesomeIcon
-                  key={index}
                   icon={hobbie.icon as IconProp}
                   className={styles.hobbieIcon}
                 />

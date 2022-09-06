@@ -1,8 +1,14 @@
 .section-header {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   margin: 4rem 0 2rem 0;
+}
+
+@media (min-width: 576px) {
+  .section-header {
+    align-items: flex-start;
+  }
 }
 
 .section-header span {
@@ -25,5 +31,11 @@
 
 .section-header h2 {
   font-size: 3rem;
-  text-align: start;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .section-header h2 {
+    text-align: start
+  }
 }

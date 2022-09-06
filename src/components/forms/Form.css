@@ -1,0 +1,8 @@
+.form-control-override {
+  font-size: 1.6rem !important;
+  text-align: left;
+}
+
+.form-label {
+  font-weight: 500;
+}

@@ -15,7 +15,8 @@ html, body {
   padding: 0.8rem 2rem;
   background-color: #fff;
   color: #212529;
-  border: 0.2rem solid #212529;
+  /* border: 0.2rem solid #212529; */
+  border: none;
   font-weight: 700;
   font-size: 1.6rem;
 }
@@ -47,6 +48,10 @@ p {
 ul, ol {
   padding: 0 !important;
   margin: 0 !important;
+}
+
+textarea {
+  resize: none !important;
 }
 
 /*   FONT SIZE SYSTEM  */
