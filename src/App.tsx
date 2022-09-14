@@ -6,6 +6,7 @@ import ListenNow from "./components/main/ListenNow";
 import MeetTheHosts from "./components/main/MeetTheHosts";
 import ContactUs from "./components/main/ContactUs";
 import Container from "./components/wrappers/Container";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <MeetTheHosts />
         <ContactUs />
       </Container>
+      <Footer />
     </div>
   );
 }

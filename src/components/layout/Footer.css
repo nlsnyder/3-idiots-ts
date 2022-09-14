@@ -1,0 +1,47 @@
+.footer {
+  background-color: #0b2272;
+  color: #fff;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+}
+
+.footer-podcast-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.footer-podcast-icon {
+  height: 2rem;
+}
+
+.footer-contact {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+@media (min-width: 576px) {
+  .footer-contact {
+    text-align: left;
+  }
+}
+
+.nav-footer {
+  font-size: 1.2rem;
+  font-weight: 500;
+  list-style: none;
+  text-align: center;
+}
+@media (min-width: 576px) {
+  .nav-footer {
+    text-align: left;
+  }
+}
+
+.nav-footer li {
+  margin-bottom: 1rem;
+}
+
+.nav-footer li a {
+  color: #fff;
+  text-decoration: none;
+}

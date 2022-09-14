@@ -22,10 +22,19 @@ const ContactUs: React.FC<{}> = (props) => {
         />
       </RowCol>
       <RowCol
-        rowClasses="row justify-content-center my-4"
-        colClasses="col-11 col-sm-8"
+        rowClasses="row justify-content-center mt-4 formMargin"
+        colClasses="col-10 col-sm-8"
       >
-        <form className={`row g-5 contactForm`}>
+        <form className={`row mt-4 gx-5 gy-3 contactForm`}>
+          <div className="d-flex justify-content-center align-items-center m-0">
+            <SubHeading sectionHeading={null} title="Contact" />
+          </div>
+          <div className="col-12 mb-4">
+            <p>
+              Please tell us what you love or any feedback on how we can improve
+              the podcast below
+            </p>
+          </div>
           {/* Two form inputs of name and email */}
           <div className="col-12 col-lg-6 form-group">
             <FormGroup
