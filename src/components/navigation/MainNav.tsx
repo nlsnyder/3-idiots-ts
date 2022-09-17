@@ -51,13 +51,13 @@ const MainNav: React.FC<{}> = (props) => {
           <div
             className={`d-none d-md-flex col-md-6 justify-content-md-center ${styles.list}`}
           >
-            <a href="/" className="nav-link">
+            <a href="#listen-now" className="nav-link">
               Listen Now
             </a>
-            <a href="/" className="nav-link">
+            <a href="#meet-the-hosts" className="nav-link">
               The Hosts
             </a>
-            <a href="/contact-us" className="nav-link">
+            <a href="#contact-us" className="nav-link">
               Contact Us
             </a>
           </div>
