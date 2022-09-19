@@ -1,1 +1,22 @@
-import React from 'react';
+import React from "react";
+import { NavLink } from "../../interfaces/interfaces";
+import NavLinkItem from "./NavLinkItem";
+import './NavLinkList.css';
+
+const NavLinkList: React.FC<{ classes: string; navItems: NavLink[] }> = (
+  props
+) => {
+  return (
+    <ul className={`${props.classes} navList`}>
+      {props.navItems.map((item) => {
+        return (
+          <li key={item.id}>
+            <NavLinkItem navLink={item} />
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+export default NavLinkList;

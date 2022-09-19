@@ -1,0 +1,5 @@
+.navList {
+  list-style: none;
+  gap: 4rem;
+  align-items: center;
+}

@@ -3,9 +3,10 @@ import { IconDefinition } from "@fortawesome/free-brands-svg-icons";
 
 export interface NavLink {
   link: string;
-  id: number;
+  id?: number;
   href: string;
-  icon: Definition;
+  icon?: Definition;
+  classes?: string;
 }
 
 export interface FeatureImage {
