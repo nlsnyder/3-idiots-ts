@@ -1,18 +1,32 @@
 import React, { ReactNode } from "react";
 import ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
+
 import "./Sidebar.css";
 
-const SideBar: React.FC<{ children: ReactNode }> = (props) => {
+const SideBar: React.FC<{
+  children: ReactNode;
+  navOpen: boolean;
+}> = (props) => {
   const bar = (
-    <div
-      className="d-sm-none navbar-nav sidebar animate__animated"
-      id="mainNavbar"
+    <CSSTransition
+      in={props.navOpen}
+      timeout={200}
+      classNames="slide-in-right"
+      mountOnEnter
+      unmountOnExit
     >
-      {props.children}
-    </div>
+      <div
+        className="navbar-nav sidebar d-sm-none"
+        id="mainNavbar"
+      >{props.children}</div>
+    </CSSTransition>
   );
 
-  return ReactDOM.createPortal(bar, document.getElementById("sidebar") as HTMLElement);
+  return ReactDOM.createPortal(
+    bar,
+    document.getElementById("sidebar") as HTMLElement
+  );
 };
 
 export default SideBar;

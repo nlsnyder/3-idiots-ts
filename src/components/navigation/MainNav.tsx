@@ -21,11 +21,9 @@ const MainNav: React.FC<{}> = (props) => {
 
   return (
     <>
-      {mobileNavOpen && (
-        <SideBar>
-          <MobileNav links={mobileNavLinks} toggleNav={toggleMobileNavOpen} />
-        </SideBar>
-      )}
+      <SideBar navOpen={mobileNavOpen}>
+        <MobileNav links={mobileNavLinks} toggleNav={toggleMobileNavOpen} />
+      </SideBar>
       {mobileNavOpen && <Overlay toggleNav={toggleMobileNavOpen} />}
       <Header>
         <nav className={`navbar py-3`}>

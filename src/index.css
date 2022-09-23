@@ -8,6 +8,7 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 10px;
+  text-align: left;
 }
 
 .secondaryButton {
@@ -52,6 +53,27 @@ ul, ol {
 
 textarea {
   resize: none !important;
+}
+
+.slide-in-right-enter {
+  transform: translateX(100%);
+}
+
+.slide-in-right-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 300ms ease;
+}
+
+.slide-in-right-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.slide-in-right-exit-active {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 500ms ease;
 }
 
 /*   FONT SIZE SYSTEM  */

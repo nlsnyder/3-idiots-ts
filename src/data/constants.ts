@@ -122,9 +122,9 @@ export const WhereFromOptions: SelectOption[] = [
 ];
 
 export const mobileNavLinks: NavLink[] = [
-  { link: "Listen Now", id: 1, href: "/", icon: faHeadphones },
-  { link: "The Hosts", id: 2, href: "/", icon: faUserGroup },
-  { link: "Contact Us", id: 3, href: "/", icon: faEnvelopeOpenText }
+  { link: "Listen Now", id: 1, href: "#listen-now", icon: faHeadphones },
+  { link: "The Hosts", id: 2, href: "#meet-the-hosts", icon: faUserGroup },
+  { link: "Contact Us", id: 3, href: "#contact-us", icon: faEnvelopeOpenText }
 ];
 
 export const desktopNavLinks: NavLink[] = [
