@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./SubHeading.module.css";
+import styles from "../../assets/css/layout/SubHeading.module.css";
 
 const SubHeading: React.FC<{ title: string; sectionHeading: string | null }> = (
   props

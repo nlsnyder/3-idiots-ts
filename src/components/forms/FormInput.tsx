@@ -1,5 +1,5 @@
 import React from "react";
-import './Form.css';
+import '../../assets/css/forms/Form.css';
 
 const FormInput: React.FC<{
   type: string;

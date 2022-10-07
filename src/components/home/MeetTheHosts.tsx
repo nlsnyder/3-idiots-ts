@@ -1,6 +1,6 @@
 import React from "react";
 import SubHeading from "../layout/SubHeading";
-import styles from "./MeetTheHosts.module.css";
+import styles from "../../assets/css/home/MeetTheHosts.module.css";
 import Host from "./Host";
 import { hostProfiles } from "../../data/constants";
 import RowCol from "../wrappers/RowCol";

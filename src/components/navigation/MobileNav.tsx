@@ -1,8 +1,10 @@
 import React from "react";
+
 import { IconDefinition, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { NavLink } from "../../interfaces/interfaces";
-import "./MobileNav.css";
+import "../../assets/css/navigation/MobileNav.css";
 
 const MobileNav: React.FC<{ links: NavLink[]; toggleNav: () => void }> = (
   props

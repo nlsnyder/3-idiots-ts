@@ -1,13 +1,16 @@
 import React from "react";
+
 import FormGroup from "../forms/FormGroup";
 import FormLabel from "../forms/FormLabel";
 import SubHeading from "../layout/SubHeading";
 import RowCol from "../wrappers/RowCol";
-import { HeardFromOptions, WhereFromOptions } from "../../data/constants";
-import "./ContactUs.css";
-import "../forms/Form.css";
 import FormSelect from "../forms/FormSelect";
 import FormTextArea from "../forms/FormTextArea";
+
+import "../../assets/css/home/ContactUs.css";
+import "../../assets/css/forms/Form.css";
+
+import { HeardFromOptions, WhereFromOptions } from "../../data/constants";
 
 const ContactUs: React.FC<{}> = (props) => {
   return (
@@ -25,14 +28,14 @@ const ContactUs: React.FC<{}> = (props) => {
         rowClasses="row justify-content-center mt-4 formMargin"
         colClasses="col-10 col-sm-8"
       >
-        <form id="contact" className={`row mt-4 gx-5 gy-3 contactForm`}>
+        <form id="contact" className={`row mt-4 gx-5 gy-4 contactForm`}>
           <div className="d-flex justify-content-center align-items-center m-0">
             <SubHeading sectionHeading={null} title="Contact" />
           </div>
           <div className="col-12 mb-4">
             <p>
-              Please tell us what you love or any feedback on how we can improve
-              the podcast below
+              Please tell us what you enjoy most about the podcast or any
+              feedback on how we can improve below
             </p>
           </div>
           {/* Two form inputs of name and email */}

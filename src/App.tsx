@@ -1,10 +1,10 @@
 import React from "react";
 import "./App.css";
-import HeroSection from "./components/landingPage/HeroSection";
+import HeroSection from "./components/hero/HeroSection";
 import MainNav from "./components/navigation/MainNav";
-import ListenNow from "./components/main/ListenNow";
-import MeetTheHosts from "./components/main/MeetTheHosts";
-import ContactUs from "./components/main/ContactUs";
+import ListenNow from "./components/home/ListenNow";
+import MeetTheHosts from "./components/home/MeetTheHosts";
+import ContactUs from "./components/home/ContactUs";
 import Container from "./components/wrappers/Container";
 import Footer from "./components/layout/Footer";
 

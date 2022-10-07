@@ -1,5 +1,5 @@
 import { NavLink } from "../../interfaces/interfaces";
-import "./NavLinkItem.css";
+import "../../assets/css/navigation/NavLinkItem.css";
 
 const NavLinkItem: React.FC<{ navLink: NavLink }> = (props) => {
   const { navLink } = props;

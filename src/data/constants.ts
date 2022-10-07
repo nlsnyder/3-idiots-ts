@@ -1,5 +1,5 @@
-import AlexPicture from "../img/filler-photo-landscape.jpeg";
-import LandonPicture from "../img/filler-photo-landon.jpeg";
+import AlexPicture from "../assets/img/home/hosts/filler-photo-landscape.jpeg";
+import LandonPicture from "../assets/img/home/hosts/filler-photo-landon.jpeg";
 import {
   faGamepad,
   faDumbbell,

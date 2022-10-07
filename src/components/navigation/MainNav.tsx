@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import styles from "./MainNav.module.css";
-import logo from "../../img/logoipsum-logo-27.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import "./MobileNav.css";
+import logo from "../../assets/img/navigation/logoipsum-logo-27.svg";
+import styles from '../../assets/css/navigation/MainNav.module.css';
+import "../../assets/css/navigation/MobileNav.css";
+
 import MobileNav from "./MobileNav";
 import NavLinkList from "./NavLinkList";
 import Header from "../layout/Header";
 import SideBar from "./Sidebar";
-import "animate.css";
 import Overlay from "./Overlay";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+
 import { mobileNavLinks, desktopNavLinks } from "../../data/constants";
 
 const MainNav: React.FC<{}> = (props) => {

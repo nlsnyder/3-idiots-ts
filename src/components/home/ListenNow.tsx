@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
+
 import SubHeading from "../layout/SubHeading";
-import styles from "./ListenNow.module.css";
-import SpotifyLogo from "../../img/spotify-logo-image.png";
-import ApplePodcastLogo from "../../img/apple-podcast-logo-image.png";
 import RowCol from "../wrappers/RowCol";
+
+import styles from "../../assets/css/home/ListenNow.module.css";
+import SpotifyLogo from "../../assets/img/home/listen-now/spotify-logo-image.png";
+import ApplePodcastLogo from "../../assets/img/home/listen-now/apple-podcast-logo-image.png";
 
 const ListenNow: React.FC = () => {
   const [showLatestEp, setShowLatestEp] = useState(false);

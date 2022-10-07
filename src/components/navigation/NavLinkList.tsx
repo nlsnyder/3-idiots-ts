@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "../../interfaces/interfaces";
 import NavLinkItem from "./NavLinkItem";
-import './NavLinkList.css';
+import '../../assets/css/navigation/NavLinkList.css';
 
 const NavLinkList: React.FC<{ classes: string; navItems: NavLink[] }> = (
   props

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 
-import "./Sidebar.css";
+import "../../assets/css/navigation/Sidebar.css";
 
 const SideBar: React.FC<{
   children: ReactNode;
@@ -16,10 +16,9 @@ const SideBar: React.FC<{
       mountOnEnter
       unmountOnExit
     >
-      <div
-        className="navbar-nav sidebar d-sm-none"
-        id="mainNavbar"
-      >{props.children}</div>
+      <aside className="navbar-nav sidebar d-sm-none" id="mainNavbar">
+        {props.children}
+      </aside>
     </CSSTransition>
   );
 

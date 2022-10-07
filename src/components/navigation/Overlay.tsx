@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import './Overlay.css';
+
+import '../../assets/css/navigation/Overlay.css';
 
 const Overlay: React.FC<{toggleNav: () => void}> = (props) => {
   const overlay = <div className="overlay d-sm-none" onClick={props.toggleNav}></div>

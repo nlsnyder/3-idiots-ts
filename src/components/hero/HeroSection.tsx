@@ -1,6 +1,8 @@
 import React from "react";
-import styles from "./HeroSection.module.css";
+
+import styles from "../../assets/css/hero-section/HeroSection.module.css";
 import { FeatureImage } from "../../interfaces/interfaces";
+
 import {
   faFacebook,
   faTwitter,
