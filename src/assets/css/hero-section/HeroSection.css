@@ -1,27 +1,53 @@
 .heroSection {
-  height: 100%;
-  background-image: url("../../img/hero-section/Stormtrooper-hero.jpg");
+  height: 70rem;
+  background-image: none;
+  background-color: #111;
+  z-index: -1;
+  background-image: url("../../img/hero-section/mobile-hero-image.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  z-index: -1;
-  padding: 9rem 1rem !important;
+  background-position: center;
 }
 
-.heightOverride {
+@media (min-width: 300px) {
+  .heroSection {
+    height: 60rem;
+  }
+}
+
+@media (min-width: 450px) {
+  .heroSection {
+    height: 50rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .heroSection {
+    background-image: url("../../img/hero-section/Stormtrooper-hero.jpg");
+  }
+}
+
+.fullHeight {
   height: 100%;
 }
 
 .heroContainer {
-  padding: 0 0 0 7.5rem;
+  padding: 4rem;
   color: #fff;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  height: 100%;
-  text-align: left;
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .heroContainer {
+    align-items: flex-start;
+    text-align: left;
+  }
 }
 
 .heroTitle {
@@ -39,6 +65,10 @@
   gap: 1.5rem;
 }
 
+.heroLink {
+  text-decoration: none;
+}
+
 .featuredHeading {
   text-transform: uppercase;
   font-size: 1.4rem;
@@ -48,7 +78,7 @@
 }
 
 .featuredLogos {
-  display: flex; 
+  display: flex;
   justify-content: space-around;
 }
 
@@ -71,12 +101,8 @@
   color: #888;
 }
 
-.featuredIcons  {
+.featuredIcons {
   height: 4rem;
   filter: brightness(0);
   opacity: 50%;
-}
-
-.facebookLogo {
-  filter: invert(41%) sepia(20%) saturate(1602%) hue-rotate(182deg) brightness(89%) contrast(92%);
 }

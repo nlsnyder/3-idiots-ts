@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "../../interfaces/interfaces";
+import { NavLink } from "../../models/interfaces/nav-interfaces";
 import NavLinkItem from "./NavLinkItem";
 import '../../assets/css/navigation/NavLinkList.css';
 

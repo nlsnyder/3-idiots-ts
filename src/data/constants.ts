@@ -6,7 +6,9 @@ import {
   faBasketball,
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
-import { HostProfile, NavLink, SelectOption } from "../interfaces/interfaces";
+import { HostProfile } from "../models/interfaces/host-interfaces";
+import { SelectOption } from "../models/interfaces/form-interfaces";
+import { NavLink } from "../models/interfaces/nav-interfaces";
 import {
   faHeadphones,
   faUserGroup,

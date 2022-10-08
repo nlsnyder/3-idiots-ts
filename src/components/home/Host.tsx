@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "../../assets/css/home/Host.module.css";
 
-import { HostProfile } from "../../interfaces/interfaces";
+import { HostProfile } from "../../models/interfaces/host-interfaces";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
