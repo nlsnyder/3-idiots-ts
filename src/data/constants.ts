@@ -1,12 +1,19 @@
-import AlexPicture from "../img/filler-photo-landscape.jpeg";
-import LandonPicture from "../img/filler-photo-landon.jpeg";
+import AlexPicture from "../assets/img/home/hosts/filler-photo-landscape.jpeg";
+import LandonPicture from "../assets/img/home/hosts/filler-photo-landon.jpeg";
 import {
   faGamepad,
   faDumbbell,
   faBasketball,
   faMusic,
 } from "@fortawesome/free-solid-svg-icons";
-import { HostProfile, SelectOption } from "../interfaces/interfaces";
+import { HostProfile } from "../models/interfaces/host-interfaces";
+import { SelectOption } from "../models/interfaces/form-interfaces";
+import { NavLink } from "../models/interfaces/nav-interfaces";
+import {
+  faHeadphones,
+  faUserGroup,
+  faEnvelopeOpenText
+} from "@fortawesome/free-solid-svg-icons";
 
 export const hostProfiles: HostProfile[] = [
   {
@@ -114,4 +121,16 @@ export const WhereFromOptions: SelectOption[] = [
   { name: "France", value: "FRA" },
   { name: "Spain", value: "SPA" },
   { name: "Other", value: "OTH" },
+];
+
+export const mobileNavLinks: NavLink[] = [
+  { link: "Listen Now", id: 1, href: "#listen-now", icon: faHeadphones },
+  { link: "The Hosts", id: 2, href: "#meet-the-hosts", icon: faUserGroup },
+  { link: "Contact Us", id: 3, href: "#contact-us", icon: faEnvelopeOpenText }
+];
+
+export const desktopNavLinks: NavLink[] = [
+  { link: "Listen Now", id: 100, href: "#listen-now" },
+  { link: "The Hosts", id: 101, href: "#meet-the-hosts" },
+  { link: "Contact Us", id: 102, href: "#contact-us" },
 ];

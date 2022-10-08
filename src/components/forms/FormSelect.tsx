@@ -1,5 +1,5 @@
 import React from "react";
-import { SelectOption } from "../../interfaces/interfaces";
+import { SelectOption } from "../../models/interfaces/form-interfaces";
 
 const FormSelect: React.FC<{
   cssClasses: string;

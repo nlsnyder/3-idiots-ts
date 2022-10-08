@@ -1,6 +1,8 @@
 import React from "react";
+
 import RowCol from "../wrappers/RowCol";
-import "./Footer.css";
+import "../../assets/css/layout/Footer.css";
+
 import { faJedi, faPodcast } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

@@ -1,0 +1,12 @@
+.navItem:link, .navItem:visited {
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding-bottom: 0.4rem;
+  text-decoration: none;
+  color: #212529;
+  transition: border-bottom 0.03s;
+}
+
+.navItem:hover, .navItem:active{
+  border-bottom: 0.2rem solid #0b2272;
+}

@@ -1,7 +1,10 @@
 import React from "react";
-import styles from "./Host.module.css";
+
+import styles from "../../assets/css/home/Host.module.css";
+
+import { HostProfile } from "../../models/interfaces/host-interfaces";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { HostProfile } from "../../interfaces/interfaces";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const Host: React.FC<{ hostProfile: HostProfile }> = (props) => {
