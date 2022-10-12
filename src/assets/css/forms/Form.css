@@ -6,3 +6,17 @@
 .form-label {
   font-weight: 500;
 }
+
+.input-error {
+  border: 0.1rem solid #f00 !important;
+  background-color: #ffc9c9 !important;
+}
+
+.label-error {
+  color: #f00;
+}
+
+.has-error {
+  color: #f00;
+  text-align: left !important;
+}

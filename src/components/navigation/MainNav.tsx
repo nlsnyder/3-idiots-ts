@@ -26,7 +26,7 @@ const MainNav: React.FC<{}> = (props) => {
       <SideBar navOpen={mobileNavOpen}>
         <MobileNav links={mobileNavLinks} toggleNav={toggleMobileNavOpen} />
       </SideBar>
-      {mobileNavOpen && <Overlay toggleNav={toggleMobileNavOpen} />}
+      {mobileNavOpen && <Overlay toggle={toggleMobileNavOpen} isMobile />}
       <Header>
         <nav className={`navbar py-3`}>
           <a href="/">

@@ -5,11 +5,12 @@ const FormLabel: React.FC<{
   label: string;
   labelFor: string;
   classes: string;
+  hasError?: boolean
 }> = (props) => {
-  const { label, labelFor, classes } = props;
+  const { label, labelFor, classes, hasError } = props;
 
   return (
-    <label htmlFor={labelFor} className={classes}>
+    <label htmlFor={labelFor} className={`${classes} ${hasError ? 'label-error' : ''}`}>
       {label}
     </label>
   );

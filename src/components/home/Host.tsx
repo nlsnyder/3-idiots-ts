@@ -14,12 +14,8 @@ const Host: React.FC<{ hostProfile: HostProfile }> = (props) => {
     <div
       className={`col-12 col-sm-10 col-md-8 col-lg-4 ${styles.hostContainer}`}
     >
-      <div>
-        <img src={image.src} className={styles.hostPicture} alt={image.alt} />
-      </div>
-      <div className="mt-4">
-        <h3>{name}</h3>
-      </div>
+      <img src={image.src} className={styles.hostPicture} alt={image.alt} />
+      <h3 className="mt-4">{name}</h3>
       <div className={styles.characteristics}>
         <span
           className={`${styles.characteristicTag} ${styles.characteristicPrimary}`}
