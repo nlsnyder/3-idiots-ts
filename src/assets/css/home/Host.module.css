@@ -1,6 +1,6 @@
 .hostContainer {
   /* box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.08); */
-  box-shadow: 0 0.2rem 0.7rem rgba(11,34,114,0.5);
+  box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.5);
   border-radius: 1rem;
   overflow: hidden;
 }

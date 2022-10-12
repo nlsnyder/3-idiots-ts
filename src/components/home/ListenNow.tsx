@@ -3,8 +3,9 @@ import { useState } from "react";
 
 import SubHeading from "../layout/SubHeading";
 import RowCol from "../wrappers/RowCol";
+import Container from "../wrappers/Container";
 
-import styles from "../../assets/css/home/ListenNow.module.css";
+import "../../assets/css/home/ListenNow.css";
 import SpotifyLogo from "../../assets/img/home/listen-now/spotify-logo-image.png";
 import ApplePodcastLogo from "../../assets/img/home/listen-now/apple-podcast-logo-image.png";
 
@@ -21,65 +22,66 @@ const ListenNow: React.FC = () => {
     <div id="listen-now">
       <RowCol
         rowClasses="row justify-content-center"
-        colClasses="col-11 col-sm-10"
+        colClasses="col-11 col-lg-10"
       >
         <SubHeading
-          sectionHeading={"Join Us"}
-          title={"Listen now on Spotify and Apple Podcasts"}
+          sectionHeading={"Listen"}
+          title={"Available now on Spotify and Apple Podcasts"}
         />
-        <div className={styles["listen-now-section"]}>
-          <div className={`row align-items-center ${styles.gap}`}>
-            <div className="col-12 col-md-7 col-lg-9">
-              <p className={styles["listen-now-description"]}>
-                3 Idiots and a Star Wars Podcast is currently available on
-                Spotify and Apple Podcasts. Join the hosts Landon, Alex, and
-                Nathan as they discuss all the latest Star Wars news.
-              </p>
-            </div>
-            <div className={`col-12 col-md-5 col-lg-3 ${styles.listenLogos}`}>
-              <div className={styles.logoImages}>
+        <Container container="listen-now-section overflow-hidden">
+          <div className="row d-flex flex-row">
+            <div className="col-12 col-md-3 col-xl-2">
+              <div className="listenNowLinks">
                 <img
                   src={SpotifyLogo}
                   alt="spotify logo"
-                  className={styles.soloLogo}
+                  className="listenNowLogo"
                 />
                 <img
                   src={ApplePodcastLogo}
                   alt="apple podcasts logo"
-                  className={styles.soloLogo}
+                  className="listenNowLogo"
                 />
               </div>
             </div>
-          </div>
-          <RowCol
-            rowClasses="row pt-5"
-            colClasses="col-12 d-flex justify-content-center align-items-center"
-          >
-            <button
-              onClick={toggleShowLatestEp}
-              type="button"
-              className="secondaryButton"
-            >
-              {showLatestEp ? "Hide Latest Episode" : "Show Latest Episode"}
-            </button>
-          </RowCol>
-
-          {/* This will be hidden but its the latest episode of the podcast */}
-          {showLatestEp && (
-            <div className="row mt-5">
-              <div className={`col-12 ${styles.iFrame}`}>
-                <iframe
-                  title="podcast"
-                  src="https://open.spotify.com/embed/episode/0VA9eVOXbzvjj83CQUzI1w?utm_source=generator&theme=0"
-                  width="100%"
-                  height="200"
-                  frameBorder="0"
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                ></iframe>
+            <div className="col-12 col-sm">
+              <div className="listenNowInfo">
+                <h3>Keep Up To Date On Our Latest Shows</h3>
+                <hr style={{ color: "#0b2272", opacity: "0.75" }} />
+                <div className="listenNowDescription">
+                  <p>
+                    Have you been missing out on the latest Star Wars content?
+                    Do not worry, we cover it all on our podcast! Join us as we
+                    break down The Mandalorian, Obi-Wan Kenobi, and Andor. We
+                    preview upcoming releases as well. Hope to you see
+                    you there.
+                  </p>
+                  <button
+                    onClick={toggleShowLatestEp}
+                    type="button"
+                    className="primaryButton"
+                  >
+                    {showLatestEp ? 'Hide Latest Episodes' : 'Get the Latest Episodes'}
+                  </button>
+                </div>
+                {showLatestEp && (
+                  <div className="row mt-5">
+                    <div className="col-12 iFrame">
+                      <iframe
+                        title="podcast"
+                        src="https://open.spotify.com/embed/episode/0VA9eVOXbzvjj83CQUzI1w?utm_source=generator&theme=0"
+                        width="100%"
+                        height="200"
+                        frameBorder="0"
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                      ></iframe>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
-          )}
-        </div>
+          </div>
+        </Container>
       </RowCol>
     </div>
   );

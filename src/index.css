@@ -32,6 +32,16 @@ html, body {
   font-size: 1.6rem;
 }
 
+.disabledButton {
+  color: #212529;
+  background-color: #EBEBE4;
+  border: 0.2rem solid #fff;
+  border-radius: 1.5rem;
+  padding: 0.8rem 2rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
 h2, h3 {
   color: #01457B;
   font-weight: 700 !important;

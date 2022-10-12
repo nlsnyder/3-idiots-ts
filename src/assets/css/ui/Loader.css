@@ -1,0 +1,28 @@
+.loader {
+  display: inline-flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+}
+
+.loader:after {
+  content : ' ';
+  display: block;
+  width: 6.4rem;
+  height: 6.4rem;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #0b2272;
+  border-color: #0b2272 #09f #0b2272 #09f;
+  animation: spinner 1.2s linear infinite;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

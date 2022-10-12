@@ -1,0 +1,76 @@
+.listen-now-section {
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 600;
+  margin: 4rem 0 !important;
+  border-radius: 1rem;
+  box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.5);
+  background: #fff;
+}
+
+.listenNowLinks {
+  display: flex; 
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2rem;
+  background: linear-gradient(
+    117deg,
+    rgba(0, 25, 91, 0.9626444327731093) 0%,
+    rgba(0, 44, 111, 0.9682466736694678) 50%,
+    rgba(0, 40, 122, 0.9542410714285714) 100%
+  );
+}
+
+@media (min-width: 768px) {
+  .listenNowLinks {
+    flex-direction: column;
+  }
+}
+
+.listenNowLogo {
+  height: 6rem;
+  width: auto;
+}
+
+@media (min-width: 576px) {
+  .listenNowLogo {
+    height: 7rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .listenNowLogo {
+    height: 8rem;
+  }
+}
+
+.listenNowInfo {
+  padding: 2rem;
+  text-align: left;
+  color: #212529;
+  font-size: 1.6rem;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.listenNowInfo h3 {
+  font-size: 1.8rem;
+}
+
+.listenNowDescription {
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.iFrame {
+  height: 15rem;
+}

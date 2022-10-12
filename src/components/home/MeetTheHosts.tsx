@@ -17,7 +17,7 @@ const MeetTheHosts: React.FC<{}> = (props) => {
       </RowCol>
       <RowCol
         rowClasses="row justify-content-center py-5"
-        colClasses="col-11 col-sm-10"
+        colClasses="col-11"
       >
         <div className={styles.hosts}>
           {hostProfiles.map((profile) => {

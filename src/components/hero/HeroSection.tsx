@@ -42,8 +42,7 @@ const HeroSection: React.FC<{}> = (props) => {
             <p className="heroDescription">
               Welcome to 3 Idiots and a Star Wars Podcast! We release a new
               podcast every week. Join our hosts Landon, Alex, and Nathan as
-              they stay up to date on all the new Star Wars content while still
-              discussing the classics.
+              they stay up to date on all the new Star Wars content.
             </p>
             <div className="flex-column flex-sm-row heroButtons">
               <a href="#listen-now" className="primaryButton heroLink">
