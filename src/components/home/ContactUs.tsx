@@ -61,11 +61,13 @@ const ContactUs: React.FC<{}> = (props) => {
   const formSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    setIsSubmitting(true);
     setShowModal(true);
   };
 
   const closeModalHandler = () => {
     setShowModal(false);
+    setIsSubmitting(false);
   };
 
   return (

@@ -36,12 +36,12 @@
 }
 
 .modal-anim-enter {
-  transform: scale(2);
+  transform: translateX(-20rem);
   opacity: 0;
 }
 
 .modal-anim-enter-active {
-  transform: scale(1);
+  transform: translateX(0);
   opacity: 1;
   transition: all 200ms;
 }

@@ -30,15 +30,16 @@
   font-weight: 500;
   list-style: none;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
+
 @media (min-width: 576px) {
   .nav-footer {
     text-align: left;
   }
-}
-
-.nav-footer li {
-  margin-bottom: 1rem;
 }
 
 .nav-footer li a {

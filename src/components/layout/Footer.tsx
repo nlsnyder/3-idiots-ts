@@ -19,9 +19,9 @@ const Footer: React.FC<{}> = (props) => {
         rowClasses="row justify-content-center align-items-center footer"
         colClasses="col-12 col-sm-8 col-md-6"
       >
-        <div className="row gy-4 gx-5">
-          <div className="col order-2 order-sm-1">
-            <div className="d-flex flex-column gap-4 align-items-center align-items-sm-start justify-content-start">
+        <div className="row gy-5">
+          <div className="col-12 col-sm-6 order-2 order-sm-1">
+            <div className="d-flex flex-column gap-4 align-items-center">
               <span className="footer-podcast-title d-flex align-items-center gap-3">
                 <FontAwesomeIcon
                   icon={faJedi}
@@ -55,7 +55,7 @@ const Footer: React.FC<{}> = (props) => {
               </span>
             </div>
           </div>
-          <div className="col order-1 order-sm-2">
+          <div className="col-12 col-sm-6 order-1 order-sm-2">
             <ul className="nav-footer">
               <li>
                 <a href="/">Terms and Conditions</a>
