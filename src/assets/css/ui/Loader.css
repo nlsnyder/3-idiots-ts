@@ -5,6 +5,10 @@
   align-items: center;
   width: 8rem;
   height: 8rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .loader:after {
@@ -14,8 +18,8 @@
   height: 6.4rem;
   margin: 8px;
   border-radius: 50%;
-  border: 6px solid #0b2272;
-  border-color: #0b2272 #09f #0b2272 #09f;
+  border: 6px solid #00FFFF;
+  border-color: #00FFFF #09f #00FFFF #09f;
   animation: spinner 1.2s linear infinite;
 }
 @keyframes spinner {
