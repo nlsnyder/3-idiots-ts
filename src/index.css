@@ -20,6 +20,12 @@ html, body {
   border: none;
   font-weight: 700;
   font-size: 1.6rem;
+  transition: all 0.3s;
+}
+
+.secondaryButton:hover {
+  color: #212529;
+  background-color: #ccc;
 }
 
 .primaryButton {
@@ -30,6 +36,12 @@ html, body {
   padding: 0.8rem 2rem;
   font-weight: 700;
   font-size: 1.6rem;
+  transition: all 0.3s;
+}
+
+.primaryButton:hover {
+  color: #fff;
+  background-color: #01457B;
 }
 
 .disabledButton {

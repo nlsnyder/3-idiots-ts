@@ -32,20 +32,38 @@ const Footer: React.FC<{}> = (props) => {
               <div className="d-flex align-items-center gap-4">
                 <FontAwesomeIcon
                   icon={faFacebookF as IconProp}
-                  className="footer-podcast-icon"
+                  className="footer-podcast-icon facebookLogo"
                 />
-                <FontAwesomeIcon
-                  icon={faTwitter as IconProp}
-                  className="footer-podcast-icon"
-                />
-                <FontAwesomeIcon
-                  icon={faSpotify as IconProp}
-                  className="footer-podcast-icon"
-                />
-                <FontAwesomeIcon
-                  icon={faPodcast}
-                  className="footer-podcast-icon"
-                />
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://twitter.com/3IdiotsStarWars"
+                >
+                  <FontAwesomeIcon
+                    icon={faTwitter as IconProp}
+                    className="footer-podcast-icon twitterLogo"
+                  />
+                </a>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://twitter.com/3IdiotsStarWars"
+                >
+                  <FontAwesomeIcon
+                    icon={faSpotify as IconProp}
+                    className="footer-podcast-icon spotifyLogo"
+                  />
+                </a>
+                <a
+                  rel="noreferrer"
+                  target="_blank"
+                  href="https://twitter.com/3IdiotsStarWars"
+                >
+                  <FontAwesomeIcon
+                    icon={faPodcast}
+                    className="footer-podcast-icon appleLogo"
+                  />
+                </a>
               </div>
               <span className="d-flex flex-column flex-lg-row justify-content-start gap-1 footer-contact">
                 Contact us: <strong>3idiotssw@gmail.com</strong>

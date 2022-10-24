@@ -12,6 +12,12 @@
 
 .footer-podcast-icon {
   height: 2rem;
+  transition: all 0.2s;
+  color: #fff !important;
+}
+
+.footer-podcast-icon:hover {
+  cursor: pointer;
 }
 
 .footer-contact {
@@ -45,4 +51,20 @@
 .nav-footer li a {
   color: #fff;
   text-decoration: none;
+}
+
+.facebookLogo:hover {
+  color: #4267B2 !important;
+}
+
+.twitterLogo:hover {
+  color: #00acee !important;
+}
+
+.spotifyLogo:hover {
+  color: #1ed760 !important;
+}
+
+.appleLogo:hover {
+  color: #D56DFB !important;
 }

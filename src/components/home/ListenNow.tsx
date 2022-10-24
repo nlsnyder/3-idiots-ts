@@ -15,11 +15,16 @@ import { defaultAxiosParams } from "../../data/http-constants";
 import Loader from "../ui/Loader";
 
 const ListenNow: React.FC = () => {
+  const [podcastEpisodes, setPodcastEpisodes] = useState([]);
   const [spotifyParams, setSpotifyParams] = useState({});
   const { isLoading, error, sendRequest } = useAxios();
   let [currentParams, setSearchParams] = useSearchParams();
 
   const authorizeAccess = () => {
+    if (podcastEpisodes.length > 0) {
+      setPodcastEpisodes([]);
+      return;
+    }
     window.location.href =
       "https://accounts.spotify.com/authorize?" +
       new URLSearchParams(spotifyParams).toString();
@@ -52,21 +57,19 @@ const ListenNow: React.FC = () => {
         const tokens: any = await sendRequest(requestAccessTokenParams);
 
         let requestShowsParams = { ...defaultAxiosParams };
-        requestShowsParams.url =
-        requestShowsParams.url + "/api/spotify/shows";
-        requestShowsParams.method = 'POST';
+        requestShowsParams.url = requestShowsParams.url + "/api/spotify/shows";
+        requestShowsParams.method = "POST";
         requestShowsParams.data = {
           accessToken: tokens.access_token,
         };
 
-        const { items } = await sendRequest(requestShowsParams);
-
+        const { shows } = await sendRequest(requestShowsParams);
+        setPodcastEpisodes(shows.items);
         //we want items[0].id to include in url https://open.spotify.com/embed/episode/{id}?utm_source=generator
 
         setSearchParams(
           new URLSearchParams("state=" + currentParams.get("state"))
         );
-
       } else if (currentParams.get("error")) {
         //show error modal
       }
@@ -82,23 +85,35 @@ const ListenNow: React.FC = () => {
           colClasses="col-11 col-lg-10"
         >
           <SubHeading
-            sectionHeading={"Listen"}
-            title={"Available now on Spotify and Apple Podcasts"}
+            sectionHeading="Listen"
+            title="Available now on Spotify and Apple Podcasts"
           />
           <Container container="listen-now-section overflow-hidden">
             <div className="row d-flex flex-row">
               <div className="col-12 col-md-3 col-xl-2">
                 <div className="listenNowLinks">
-                  <img
-                    src={SpotifyLogo}
-                    alt="spotify logo"
-                    className="listenNowLogo"
-                  />
-                  <img
-                    src={ApplePodcastLogo}
-                    alt="apple podcasts logo"
-                    className="listenNowLogo"
-                  />
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href="https://open.spotify.com/show/173jVGeywfKnIW9mp6gG71"
+                  >
+                    <img
+                      src={SpotifyLogo}
+                      alt="Spotify logo"
+                      className="listenNowLogo"
+                    />
+                  </a>
+                  <a
+                    rel="noreferrer"
+                    target="_blank"
+                    href="https://podcasts.apple.com/us/podcast/3-idiots-and-a-star-wars-podcast/id1591536603"
+                  >
+                    <img
+                      src={ApplePodcastLogo}
+                      alt="Apple Podcasts logo"
+                      className="listenNowLogo"
+                    />
+                  </a>
                 </div>
               </div>
               <div className="col-12 col-sm">
@@ -118,7 +133,9 @@ const ListenNow: React.FC = () => {
                       type="button"
                       className="primaryButton"
                     >
-                      Get the Latest Episodes
+                      {podcastEpisodes.length > 0
+                        ? "Hide the Latest Episodes"
+                        : "Get the Latest Episodes"}
                     </button>
                   </div>
                   {error && <p>Oh no! Something went wrong!</p>}
@@ -127,6 +144,23 @@ const ListenNow: React.FC = () => {
             </div>
           </Container>
         </RowCol>
+        <div className="row justify-content-center">
+          {podcastEpisodes.map((episode: any, index: number) => {
+            return (
+              <div className="col-10" key={index}>
+                <iframe
+                  title={`Podcast episode ${index}`}
+                  style={{ borderRadius: "1.2rem" }}
+                  src={`https://open.spotify.com/embed/episode/${episode.id}?utm_source=generator&theme=0`}
+                  width="100%"
+                  height="200"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                ></iframe>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
