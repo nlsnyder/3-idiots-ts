@@ -7,18 +7,27 @@ import RowCol from "../wrappers/RowCol";
 import Container from "../wrappers/Container";
 
 import "../../assets/css/home/ListenNow.css";
+import "../../assets/css/ui/Modal.css";
 import SpotifyLogo from "../../assets/img/home/listen-now/spotify-logo-image.png";
 import ApplePodcastLogo from "../../assets/img/home/listen-now/apple-podcast-logo-image.png";
 import useAxios from "../../hooks/useAxios";
 
 import { defaultAxiosParams } from "../../data/http-constants";
 import Loader from "../ui/Loader";
+import Modal from "../ui/Modal";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faX } from "@fortawesome/free-solid-svg-icons";
 
 const ListenNow: React.FC = () => {
   const [podcastEpisodes, setPodcastEpisodes] = useState([]);
   const [spotifyParams, setSpotifyParams] = useState({});
+  const [showErrorModal, setShowErrorModal] = useState(false);
   const { isLoading, error, sendRequest } = useAxios();
   let [currentParams, setSearchParams] = useSearchParams();
+
+  const closeErrorModal = () => {
+    setShowErrorModal(false);
+  };
 
   const authorizeAccess = () => {
     if (podcastEpisodes.length > 0) {
@@ -71,7 +80,7 @@ const ListenNow: React.FC = () => {
           new URLSearchParams("state=" + currentParams.get("state"))
         );
       } else if (currentParams.get("error")) {
-        //show error modal
+        setShowErrorModal(true);
       }
     })();
   }, [sendRequest, currentParams, setSearchParams]);
@@ -79,6 +88,23 @@ const ListenNow: React.FC = () => {
   return (
     <>
       {isLoading && <Loader />}
+      <Modal
+        show={showErrorModal}
+        header="Error"
+        footer={
+          <button onClick={closeErrorModal} className="secondaryButton">
+            Close
+          </button>
+        }
+        onClose={closeErrorModal}
+      >
+        <FontAwesomeIcon icon={faX} className="error-icon" />
+        <p>
+          {error?.message
+            ? error.message
+            : "Oh no! Something went wrong. Please try again."}
+        </p>
+      </Modal>
       <div id="listen-now">
         <RowCol
           rowClasses="row justify-content-center"

@@ -10,6 +10,7 @@ import Modal from "../ui/Modal";
 
 import "../../assets/css/home/ContactUs.css";
 import "../../assets/css/forms/Form.css";
+import "../../assets/css/ui/Modal.css";
 
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 

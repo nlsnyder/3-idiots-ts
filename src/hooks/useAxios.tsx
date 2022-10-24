@@ -7,7 +7,7 @@ axios.defaults.baseURL = "https://localhost:3000";
 
 const useAxios = (): {
   isLoading: boolean;
-  error: any;
+  error: Error | null;
   sendRequest: (req: any) => Promise<any>;
 } => {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +22,7 @@ const useAxios = (): {
         setIsLoading(false);
         return res.data;
       } catch (err) {
-        const resError: any = new Error("Something went wrong");
+        const resError: any = new Error("Oh no! Something went wrong. Please try again.");
         setError(resError);
       }
     },
