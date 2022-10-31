@@ -103,16 +103,14 @@ export const hostProfiles: HostProfile[] = [
 ];
 
 export const HeardFromOptions: SelectOption[] = [
-  { name: "-- Select --", value: "Default Option" },
-  { name: "Spotify", value: "SPO" },
-  { name: "Apple Podcasts", value: "AP" },
-  { name: "Twitter", value: "TWI" },
-  { name: "Web Browser", value: "BROW" },
-  { name: "Other", value: "OTH" },
+  { name: "Spotify", value: "SPOTIFY" },
+  { name: "Apple Podcasts", value: "APPLE PODCASTS" },
+  { name: "Twitter", value: "TWITTER" },
+  { name: "Web Browser", value: "WEB BROWSER" },
+  { name: "Other", value: "OTHER" },
 ];
 
 export const WhereFromOptions: SelectOption[] = [
-  { name: "-- Select --", value: "Default Option" },
   { name: "United States", value: "US" },
   { name: "Canada", value: "CAN" },
   { name: "Mexico", value: "MEX" },

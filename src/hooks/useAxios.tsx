@@ -15,15 +15,19 @@ const useAxios = (): {
 
   const sendRequest = useCallback(
     async (req: BaseAxiosRequest) => {
+      
+      //display loader while http request is made
       setIsLoading(true);
 
       try {
+        //make request with req params passed in
         const res = await axios.request(req);
         setIsLoading(false);
         return res.data;
       } catch (err) {
         const resError: any = new Error("Oh no! Something went wrong. Please try again.");
         setError(resError);
+        setIsLoading(false);
       }
     },
     []

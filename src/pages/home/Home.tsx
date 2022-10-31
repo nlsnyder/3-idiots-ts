@@ -3,9 +3,9 @@ import React from "react";
 import HeroSection from "../../components/hero/HeroSection";
 import ListenNow from "../../components/home/ListenNow";
 import MeetTheHosts from "../../components/home/MeetTheHosts";
-import ContactUs from "../../components/home/ContactUs";
 
 import Container from "../../components/wrappers/Container";
+import ContactUsForm from "../../components/home/ContactUsForm";
 
 const Home: React.FC<{}> = props => {
 
@@ -14,7 +14,7 @@ const Home: React.FC<{}> = props => {
     <Container container="container">
       <ListenNow />
       <MeetTheHosts />
-      <ContactUs />
+      <ContactUsForm />
     </Container>
   </>;
 };

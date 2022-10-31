@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from "react";
+import useAxios from "../../hooks/useAxios";
 
-import FormGroup from "../forms/FormGroup";
 import FormLabel from "../forms/FormLabel";
 import SubHeading from "../layout/SubHeading";
 import RowCol from "../wrappers/RowCol";
@@ -52,8 +52,8 @@ const ContactUs: React.FC<{}> = (props) => {
     message: { touched: false, valid: false },
     formIsValid: false,
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const { isLoading, error, sendRequest } = useAxios();
 
   const validateForm = (validObj: object) => {
     dispatch(validObj);
@@ -62,19 +62,22 @@ const ContactUs: React.FC<{}> = (props) => {
   const formSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    setIsSubmitting(true);
-    setShowModal(true);
+    
+
   };
 
   const closeModalHandler = () => {
     setShowModal(false);
-    setIsSubmitting(false);
   };
 
   return (
     <>
+      {isLoading && <Loader />}
+
+      {/*modal to display if form submission was successful or error occurred*/}
       <Modal
         show={showModal}
+        type={error ? "error" : "confirmation"}
         header="Success"
         onClose={closeModalHandler}
         footer={
@@ -86,6 +89,7 @@ const ContactUs: React.FC<{}> = (props) => {
         <FontAwesomeIcon icon={faCheck} className="success-icon" />
         <p>Your feedback has been received!</p>
       </Modal>
+
       <div id="contact-us">
         <RowCol
           rowClasses="row justify-content-center"
@@ -116,7 +120,7 @@ const ContactUs: React.FC<{}> = (props) => {
             </div>
             {/* Two form inputs of name and email */}
             <div className="col-12 col-lg-6 form-group">
-              <FormGroup
+              {/* <FormGroup
                 formLabel="Name:"
                 formInputId="name"
                 inputType="text"
@@ -125,10 +129,10 @@ const ContactUs: React.FC<{}> = (props) => {
                 validators={[VALIDATE_REQUIRED]}
                 onValidateForm={validateForm}
                 errorText="Your name is required."
-              />
+              /> */}
             </div>
             <div className="col-12 col-lg-6">
-              <FormGroup
+              {/* <FormGroup
                 formLabel="Email:"
                 formInputId="email"
                 inputType="email"
@@ -137,7 +141,7 @@ const ContactUs: React.FC<{}> = (props) => {
                 validators={[VALIDATE_EMAIL, VALIDATE_REQUIRED]}
                 onValidateForm={validateForm}
                 errorText="Please enter a valid email."
-              />
+              /> */}
             </div>
             {/* Two form inputs of where are you from and how did you hear about us */}
             <div className="col-12 col-lg-6">
@@ -188,7 +192,6 @@ const ContactUs: React.FC<{}> = (props) => {
                 onValidateText={validateForm}
               />
             </div>
-            {isSubmitting && <Loader />}
             {/* submit button */}
             <div className="col-12 d-flex justify-content-center justify-content-sm-start">
               <button

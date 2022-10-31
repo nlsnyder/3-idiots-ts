@@ -20,9 +20,20 @@
 
 .custom-modal-header {
   width: 100%;
-  background-color: #0b2272;
   padding: 1rem;
   font-weight: 700;
+}
+
+.error-header {
+  background-color: #c00;
+}
+
+.confirmation-header {
+  background-color: #0b2272;
+}
+
+.default-header {
+  background-color: #0b2272;
 }
 
 .custom-modal-header h2 {
