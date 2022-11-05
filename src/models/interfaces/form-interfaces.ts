@@ -10,3 +10,10 @@ export interface ContactInitValues {
   whereFrom: string;
   message: string;
 }
+
+export interface ApiRequestError {
+  msg: string,
+  value?: string,
+  param?: string,
+  location?: string
+}

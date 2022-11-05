@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import SubHeading from "../layout/SubHeading";
 import RowCol from "../wrappers/RowCol";
@@ -15,21 +15,23 @@ import useAxios from "../../hooks/useAxios";
 import { defaultAxiosParams } from "../../data/http-constants";
 import Loader from "../ui/Loader";
 import Modal from "../ui/Modal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import ErrorsList from "../ui/ErrorsList";
 
 const ListenNow: React.FC = () => {
   const [podcastEpisodes, setPodcastEpisodes] = useState([]);
   const [spotifyParams, setSpotifyParams] = useState({});
   const [showErrorModal, setShowErrorModal] = useState(false);
-  const { isLoading, error, sendRequest } = useAxios();
-  let [currentParams, setSearchParams] = useSearchParams();
+  const { isLoading, errors, sendRequest, clearError, setErrors } = useAxios();
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const closeErrorModal = () => {
+    clearError();
     setShowErrorModal(false);
   };
 
-  const authorizeAccess = () => {
+  const authorizeOrClearEpisodes = () => {
+    //if there are podcast episodes already rendered, it means they wanted to clear the episodes
     if (podcastEpisodes.length > 0) {
       setPodcastEpisodes([]);
       return;
@@ -53,7 +55,8 @@ const ListenNow: React.FC = () => {
     })();
 
     (async function getSpotifyAccessToken() {
-      let accessCode = currentParams.get("code");
+      let accessCode = searchParams.get('code');
+      console.log(`code = ${accessCode}`);
       if (accessCode) {
         let requestAccessTokenParams = { ...defaultAxiosParams };
         requestAccessTokenParams.url =
@@ -63,7 +66,12 @@ const ListenNow: React.FC = () => {
           code: accessCode,
         };
 
-        const tokens: any = await sendRequest(requestAccessTokenParams);
+        let tokens: any;
+        try {
+          tokens = await sendRequest(requestAccessTokenParams);
+        } catch (err) {
+          console.log("Oh no! An error occured.");
+        }
 
         let requestShowsParams = { ...defaultAxiosParams };
         requestShowsParams.url = requestShowsParams.url + "/api/spotify/shows";
@@ -72,39 +80,40 @@ const ListenNow: React.FC = () => {
           accessToken: tokens.access_token,
         };
 
-        const { shows } = await sendRequest(requestShowsParams);
-        setPodcastEpisodes(shows.items);
-        //we want items[0].id to include in url https://open.spotify.com/embed/episode/{id}?utm_source=generator
+        //MUST CACHE THESE EPISODES SO A NEW REQUEST DOESN'T NEED TO BE MADE
+        try {
+          const { shows } = await sendRequest(requestShowsParams);
+          setPodcastEpisodes(shows.items);
+          //we want items[0].id to include in url https://open.spotify.com/embed/episode/{id}?utm_source=generator
 
-        setSearchParams(
-          new URLSearchParams("state=" + currentParams.get("state"))
-        );
-      } else if (currentParams.get("error")) {
+          navigate("/home?state=" + searchParams.get('state'), { replace: true });
+        } catch (err) {
+          console.log("Oh no! An error occurred.");
+        }
+      } else if (searchParams.get('error')) {
+        setErrors([{ msg: "An error occurred trying to grab the latest podcast episodes." }]);
         setShowErrorModal(true);
       }
     })();
-  }, [sendRequest, currentParams, setSearchParams]);
+  }, [sendRequest, navigate, searchParams, setErrors]);
 
   return (
     <>
       {isLoading && <Loader />}
       <Modal
-        show={showErrorModal}
+        show={errors || showErrorModal ? true : false}
         header="Error"
+        type="error"
         footer={
-          <button onClick={closeErrorModal} className="secondaryButton">
+          <button onClick={closeErrorModal} className="btnCommon">
             Close
           </button>
         }
         onClose={closeErrorModal}
       >
-        <FontAwesomeIcon icon={faX} className="error-icon" />
-        <p>
-          {error?.message
-            ? error.message
-            : "Oh no! Something went wrong. Please try again."}
-        </p>
+        {errors && <ErrorsList errors={errors} />}
       </Modal>
+
       <div id="listen-now">
         <RowCol
           rowClasses="row justify-content-center"
@@ -155,7 +164,7 @@ const ListenNow: React.FC = () => {
                       there.
                     </p>
                     <button
-                      onClick={authorizeAccess}
+                      onClick={authorizeOrClearEpisodes}
                       type="button"
                       className="primaryButton"
                     >
@@ -164,7 +173,6 @@ const ListenNow: React.FC = () => {
                         : "Get the Latest Episodes"}
                     </button>
                   </div>
-                  {error && <p>Oh no! Something went wrong!</p>}
                 </div>
               </div>
             </div>

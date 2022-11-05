@@ -11,6 +11,17 @@ html, body {
   text-align: left;
 }
 
+.btnCommon {
+  border-radius: 1.5rem;
+  padding: 0.8rem 2rem;
+  background-color: #fff;
+  color: #212529;
+  /* border: 0.2rem solid #212529; */
+  border: none;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
 .secondaryButton {
   border-radius: 1.5rem;
   padding: 0.8rem 2rem;

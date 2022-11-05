@@ -5,7 +5,7 @@ import ListenNow from "../../components/home/ListenNow";
 import MeetTheHosts from "../../components/home/MeetTheHosts";
 
 import Container from "../../components/wrappers/Container";
-import ContactUsForm from "../../components/home/ContactUsForm";
+import ContactUs from "../../components/home/ContactUs";
 
 const Home: React.FC<{}> = props => {
 
@@ -14,7 +14,7 @@ const Home: React.FC<{}> = props => {
     <Container container="container">
       <ListenNow />
       <MeetTheHosts />
-      <ContactUsForm />
+      <ContactUs />
     </Container>
   </>;
 };
