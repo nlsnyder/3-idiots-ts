@@ -8,11 +8,25 @@ import "../../assets/css/ui/Modal.css";
 
 const Modal: React.FC<{
   show: boolean;
+  type?: "error" | "confirmation";
   header: string;
   footer: any;
   children: ReactNode;
   onClose: () => void;
 }> = (props) => {
+  let headerColor;
+  switch(props.type) {
+    case "error":
+      headerColor = "error-header";
+      break;
+    case "confirmation":
+      headerColor = "confirmation-header"
+      break;
+    default:
+      headerColor = "default-header";
+      break;
+  }
+
   const content = (
     <>
     {props.show && <Overlay toggle={props.onClose} />}
@@ -24,7 +38,7 @@ const Modal: React.FC<{
       classNames="modal-anim"
     >
       <div className="custom-modal">
-        <header className="custom-modal-header">
+        <header className={`custom-modal-header ${headerColor}`}>
           <h2>{props.header}</h2>
         </header>
         <div className="custom-modal-body">{props.children}</div>

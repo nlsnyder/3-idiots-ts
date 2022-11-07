@@ -1,91 +1,43 @@
-import React, { useReducer, useState } from "react";
+import React from "react";
+import * as Yup from "yup";
 
-import FormGroup from "../forms/FormGroup";
-import FormLabel from "../forms/FormLabel";
 import SubHeading from "../layout/SubHeading";
 import RowCol from "../wrappers/RowCol";
-import FormSelect from "../forms/FormSelect";
-import FormTextArea from "../forms/FormTextArea";
-import Modal from "../ui/Modal";
 
 import "../../assets/css/home/ContactUs.css";
 import "../../assets/css/forms/Form.css";
 import "../../assets/css/ui/Modal.css";
+import { ContactInitValues } from "../../models/interfaces/form-interfaces";
+import { OptionalObjectSchema } from "yup/lib/object";
+import ContactForm from "../forms/ContactForm";
 
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+const ContactUsForm: React.FC<{}> = (props) => {
+  const initialValues: ContactInitValues = {
+    name: "",
+    email: "",
+    heardFrom: "SPOTIFY",
+    whereFrom: "USA",
+    message: "",
+  };
 
-import { VALIDATE_EMAIL, VALIDATE_REQUIRED } from "../../util/form-validators";
-
-import { HeardFromOptions, WhereFromOptions } from "../../data/constants";
-import Loader from "../ui/Loader";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-const formReducer = (state: any, action: any) => {
-  switch (action.type) {
-    case "name":
-      return {
-        ...state,
-        name: action.val,
-        formIsValid: state.message.valid && state.email && action.val,
-      };
-    case "email":
-      return {
-        ...state,
-        email: action.val,
-        formIsValid: state.message.valid && state.name && action.val,
-      };
-    case "message":
-      return {
-        ...state,
-        message: { touched: true, valid: action.val },
-        formIsValid: state.name && state.email && action.val,
-      };
-    default:
-      return state;
-  }
-};
-
-const ContactUs: React.FC<{}> = (props) => {
-  const [formValidity, dispatch] = useReducer(formReducer, {
-    name: false,
-    email: false,
-    message: { touched: false, valid: false },
-    formIsValid: false,
+  const contactSchema: OptionalObjectSchema<any> = Yup.object({
+    name: Yup.string().required("Name is required."),
+    email: Yup.string()
+      .email("Please enter a valid email address.")
+      .required("Email is required."),
+    message: Yup.string()
+      .min(5, "Message must be at least 5 characters")
+      .max(400, "Message must be less than 400 characters.")
+      .required("Message is required"),
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showModal, setShowModal] = useState(false);
 
-  const validateForm = (validObj: object) => {
-    dispatch(validObj);
-  };
-
-  const formSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    setIsSubmitting(true);
-    setShowModal(true);
-  };
-
-  const closeModalHandler = () => {
-    setShowModal(false);
-    setIsSubmitting(false);
+  const formProps = {
+    initialValues,
+    contactSchema,
   };
 
   return (
     <>
-      <Modal
-        show={showModal}
-        header="Success"
-        onClose={closeModalHandler}
-        footer={
-          <button onClick={closeModalHandler} className="secondaryButton">
-            Close
-          </button>
-        }
-      >
-        <FontAwesomeIcon icon={faCheck} className="success-icon" />
-        <p>Your feedback has been received!</p>
-      </Modal>
       <div id="contact-us">
         <RowCol
           rowClasses="row justify-content-center"
@@ -100,112 +52,11 @@ const ContactUs: React.FC<{}> = (props) => {
           rowClasses="row justify-content-center mt-4 formMargin"
           colClasses="col-10 col-sm-8"
         >
-          <form
-            id="contact"
-            className={`row mt-4 gx-5 gy-4 contactForm`}
-            onSubmit={formSubmitHandler}
-          >
-            <div className="d-flex justify-content-center align-items-center m-0">
-              <SubHeading sectionHeading={null} title="Contact" />
-            </div>
-            <div className="col-12 mb-5">
-              <p>
-                Please tell us what you enjoy most about the podcast or any
-                feedback on how we can improve below
-              </p>
-            </div>
-            {/* Two form inputs of name and email */}
-            <div className="col-12 col-lg-6 form-group">
-              <FormGroup
-                formLabel="Name:"
-                formInputId="name"
-                inputType="text"
-                inputClasses="form-control form-control-override"
-                inputPlaceholder="ex. John Smith"
-                validators={[VALIDATE_REQUIRED]}
-                onValidateForm={validateForm}
-                errorText="Your name is required."
-              />
-            </div>
-            <div className="col-12 col-lg-6">
-              <FormGroup
-                formLabel="Email:"
-                formInputId="email"
-                inputType="email"
-                inputClasses="form-control form-control-override"
-                inputPlaceholder="example@gmail.com"
-                validators={[VALIDATE_EMAIL, VALIDATE_REQUIRED]}
-                onValidateForm={validateForm}
-                errorText="Please enter a valid email."
-              />
-            </div>
-            {/* Two form inputs of where are you from and how did you hear about us */}
-            <div className="col-12 col-lg-6">
-              <FormLabel
-                label="How did you hear about us?"
-                labelFor="heardFrom"
-                classes="form-label d-flex"
-              />
-              <FormSelect
-                cssClasses="form-select form-control-override"
-                aria="Select how you heard about us"
-                options={HeardFromOptions}
-                selectId="heardFrom"
-              />
-            </div>
-            <div className="col-12 col-lg-6">
-              <FormLabel
-                label="Where are you from?"
-                labelFor="whereFrom"
-                classes="form-label d-flex"
-              />
-              <FormSelect
-                cssClasses="form-select form-control-override"
-                aria="Select where you're from"
-                options={WhereFromOptions}
-                selectId="whereFrom"
-              />
-            </div>
-            {/* One form input of message */}
-            <div className="col-12">
-              <FormLabel
-                label="Your feedback"
-                labelFor="feedback"
-                classes="form-label d-flex"
-                hasError={
-                  formValidity.message.touched
-                    ? !formValidity.message.valid
-                    : false
-                }
-              />
-              <FormTextArea
-                cssClasses="form-control form-control-override"
-                placeholder="Message..."
-                id="feedback"
-                rows={5}
-                errorText="Message is required."
-                validators={[VALIDATE_REQUIRED]}
-                onValidateText={validateForm}
-              />
-            </div>
-            {isSubmitting && <Loader />}
-            {/* submit button */}
-            <div className="col-12 d-flex justify-content-center justify-content-sm-start">
-              <button
-                disabled={!formValidity.formIsValid}
-                type="submit"
-                className={
-                  formValidity.formIsValid ? "primaryButton" : "disabledButton"
-                }
-              >
-                Submit
-              </button>
-            </div>
-          </form>
+          <ContactForm {...formProps} />
         </RowCol>
       </div>
     </>
   );
 };
 
-export default ContactUs;
+export default ContactUsForm;

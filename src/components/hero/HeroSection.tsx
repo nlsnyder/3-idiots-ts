@@ -24,7 +24,6 @@ const featuredLogos: FeatureImage[] = [
     label: "Apple Podcasts",
   },
   { id: 3, icon: faTwitter, alt: "Twitter logo", label: "Twitter" },
-  { id: 4, icon: faFacebook, alt: "Facebook logo", label: "Facebook" },
 ];
 
 const HeroSection: React.FC<{}> = (props) => {
@@ -58,7 +57,7 @@ const HeroSection: React.FC<{}> = (props) => {
       <Container container="container-fluid container-md py-5">
         <RowCol
           rowClasses="row flex-column justify-content-center align-items-center"
-          colClasses="col-12 col-lg-6 gap"
+          colClasses="col-10 col-sm-8 col-md-6 col-lg-4 gap"
         >
           <h2 className="featuredHeading">Find Us On</h2>
           <div className="featuredLogos">
@@ -66,7 +65,7 @@ const HeroSection: React.FC<{}> = (props) => {
               return (
                 <div
                   key={image.id}
-                  className="col-3 d-flex flex-column featuredSection"
+                  className="col-4 d-flex flex-column featuredSection"
                 >
                   <FontAwesomeIcon
                     icon={image.icon as IconDefinition}

@@ -1,10 +1,16 @@
 import AlexPicture from "../assets/img/home/hosts/filler-photo-landscape.jpeg";
 import LandonPicture from "../assets/img/home/hosts/filler-photo-landon.jpeg";
 import {
-  faGamepad,
   faDumbbell,
   faBasketball,
   faMusic,
+  faCompactDisc,
+  faBaseball,
+  faBookBible,
+  faRecordVinyl,
+  faRoad,
+  faGhost,
+  faDog,
 } from "@fortawesome/free-solid-svg-icons";
 import { HostProfile } from "../models/interfaces/host-interfaces";
 import { SelectOption } from "../models/interfaces/form-interfaces";
@@ -14,6 +20,7 @@ import {
   faUserGroup,
   faEnvelopeOpenText
 } from "@fortawesome/free-solid-svg-icons";
+import { faTwitch } from "@fortawesome/free-brands-svg-icons";
 
 export const hostProfiles: HostProfile[] = [
   {
@@ -21,26 +28,26 @@ export const hostProfiles: HostProfile[] = [
     image: { src: LandonPicture, alt: "One of the hosts, Landon" },
     name: "Landon",
     characteristics: {
-      primary: "22",
+      primary: "23",
       secondary: "Madison",
       tertiary: "UW LaCrosse",
     },
     hobbies: [
       {
-        icon: faGamepad,
-        label: "Plays 2k and Minecraft",
+        icon: faTwitch,
+        label: "Streams on Twitch",
       },
       {
-        icon: faBasketball,
-        label: "Milwaukee Bucks fan",
+        icon: faBaseball,
+        label: "Unfortunate suporter of Milwaukee Brewers",
       },
       {
         icon: faDumbbell,
-        label: "Weighlifting and fitness",
+        label: "Picks up heavy items for a living",
       },
       {
-        icon: faMusic,
-        label: "Only listens to rap",
+        icon: faRecordVinyl,
+        label: "Olivia Rodrigo's biggest fan",
       },
     ],
   },
@@ -55,20 +62,20 @@ export const hostProfiles: HostProfile[] = [
     },
     hobbies: [
       {
-        icon: faGamepad,
-        label: "Plays 2k and Minecraft",
+        icon: faBookBible,
+        label: "Has regained his virginity",
       },
       {
-        icon: faBasketball,
-        label: "Milwaukee Bucks fan",
+        icon: faRoad,
+        label: "Designs roads as civil engineer",
       },
       {
-        icon: faDumbbell,
-        label: "Weighlifting and fitness",
+        icon: faGhost,
+        label: "Easily frightened by scary movies",
       },
       {
-        icon: faMusic,
-        label: "Only listens to rap",
+        icon: faDog,
+        label: "Co-owner of Mabel the Golden Doodle",
       },
     ],
   },
@@ -77,14 +84,14 @@ export const hostProfiles: HostProfile[] = [
     image: { src: AlexPicture, alt: "One of the hosts, Alex" },
     name: "Alex",
     characteristics: {
-      primary: "23",
+      primary: "24",
       secondary: "Madison",
       tertiary: "Iowa State",
     },
     hobbies: [
       {
-        icon: faGamepad,
-        label: "Plays 2k and Minecraft",
+        icon: faCompactDisc,
+        label: "Professional beat producer",
       },
       {
         icon: faBasketball,
@@ -103,16 +110,14 @@ export const hostProfiles: HostProfile[] = [
 ];
 
 export const HeardFromOptions: SelectOption[] = [
-  { name: "-- Select --", value: "Default Option" },
-  { name: "Spotify", value: "SPO" },
-  { name: "Apple Podcasts", value: "AP" },
-  { name: "Twitter", value: "TWI" },
-  { name: "Web Browser", value: "BROW" },
-  { name: "Other", value: "OTH" },
+  { name: "Spotify", value: "SPOTIFY" },
+  { name: "Apple Podcasts", value: "APPLE PODCASTS" },
+  { name: "Twitter", value: "TWITTER" },
+  { name: "Web Browser", value: "WEB BROWSER" },
+  { name: "Other", value: "OTHER" },
 ];
 
 export const WhereFromOptions: SelectOption[] = [
-  { name: "-- Select --", value: "Default Option" },
   { name: "United States", value: "US" },
   { name: "Canada", value: "CAN" },
   { name: "Mexico", value: "MEX" },

@@ -76,6 +76,7 @@
 
 .hobbiesList li {
   padding-left: 0rem;
+  text-align: left !important;
   font-size: 1.2rem;
   display: flex;
   gap: 1rem;
