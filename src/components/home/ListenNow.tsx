@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { useQuery } from "react-query";
+import axios, { AxiosResponse } from "axios";
 
 import SubHeading from "../layout/SubHeading";
 import RowCol from "../wrappers/RowCol";
@@ -16,8 +18,9 @@ import { defaultAxiosParams } from "../../data/http-constants";
 import Loader from "../ui/Loader";
 import Modal from "../ui/Modal";
 import ErrorsList from "../ui/ErrorsList";
+import { BaseAxiosRequest } from "../../models/interfaces/http-interfaces";
 
-const ListenNow: React.FC = () => {
+const ListenNow: React.FC<{}> = () => {
   const [podcastEpisodes, setPodcastEpisodes] = useState([]);
   const [spotifyParams, setSpotifyParams] = useState({});
   const [showErrorModal, setShowErrorModal] = useState(false);
@@ -40,6 +43,8 @@ const ListenNow: React.FC = () => {
       "https://accounts.spotify.com/authorize?" +
       new URLSearchParams(spotifyParams).toString();
   };
+
+  //const grabClientParams = (axiosParams: BaseAxiosRequest) => axios.request(axiosParams);
 
   useEffect(() => {
     let params = { ...defaultAxiosParams };
@@ -80,7 +85,7 @@ const ListenNow: React.FC = () => {
           accessToken: tokens.access_token,
         };
 
-        //MUST CACHE THESE EPISODES SO A NEW REQUEST DOESN'T NEED TO BE MADE
+        //TODO: MUST CACHE THESE EPISODES SO A NEW REQUEST DOESN'T NEED TO BE MADE
         try {
           const { shows } = await sendRequest(requestShowsParams);
           setPodcastEpisodes(shows.items);
