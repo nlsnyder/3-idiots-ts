@@ -1,8 +1,8 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
+import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 
 import SubHeading from "../layout/SubHeading";
 import RowCol from "../wrappers/RowCol";
@@ -12,56 +12,66 @@ import "../../assets/css/home/ListenNow.css";
 import "../../assets/css/ui/Modal.css";
 import SpotifyLogo from "../../assets/img/home/listen-now/spotify-logo-image.png";
 import ApplePodcastLogo from "../../assets/img/home/listen-now/apple-podcast-logo-image.png";
-import useAxios from "../../hooks/useAxios";
 
 import { defaultAxiosParams } from "../../data/http-constants";
 import Loader from "../ui/Loader";
 import Modal from "../ui/Modal";
 import ErrorsList from "../ui/ErrorsList";
 import { BaseAxiosRequest } from "../../models/interfaces/http-interfaces";
+import { ApiRequestError } from "../../models/interfaces/form-interfaces";
+import useAxios from "../../hooks/useAxios";
+
+const grabClientParams = async () => {
+  let axiosParams: BaseAxiosRequest = { ...defaultAxiosParams };
+  axiosParams.url = axiosParams.url + "/api/spotify/getClientParams";
+
+  return await axios.request(axiosParams);
+};
 
 const ListenNow: React.FC<{}> = () => {
+  const showRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [podcastEpisodes, setPodcastEpisodes] = useState([]);
-  const [spotifyParams, setSpotifyParams] = useState({});
   const [showErrorModal, setShowErrorModal] = useState(false);
-  const { isLoading, errors, sendRequest, clearError, setErrors } = useAxios();
+  const [errorList, setErrorList] = useState<Array<ApiRequestError>>([]);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const { isLoading, errors, sendRequest, clearError } = useAxios();
+  const clientParams: any = useQuery(
+    "clientParams",
+    useCallback(grabClientParams, []),
+    {
+      retry: 0,
+    }
+  );
+
+  let errorListToShow = errors.concat(errorList);
+  let loading = clientParams.isLoading || isLoading;
+  let showError = showErrorModal || errors.length > 0;
 
   const closeErrorModal = () => {
-    clearError();
     setShowErrorModal(false);
+    setErrorList([]);
+    clearError();
+    navigate("/home", {
+      replace: true,
+    });
   };
 
   const authorizeOrClearEpisodes = () => {
     //if there are podcast episodes already rendered, it means they wanted to clear the episodes
     if (podcastEpisodes.length > 0) {
       setPodcastEpisodes([]);
-      return;
+    } else {
+      window.location.href =
+        "https://accounts.spotify.com/authorize?" +
+        new URLSearchParams(clientParams.data?.data).toString();
     }
-    window.location.href =
-      "https://accounts.spotify.com/authorize?" +
-      new URLSearchParams(spotifyParams).toString();
   };
 
-  //const grabClientParams = (axiosParams: BaseAxiosRequest) => axios.request(axiosParams);
-
   useEffect(() => {
-    let params = { ...defaultAxiosParams };
-    params.url = params.url + "/api/spotify/getClientParams";
-
-    (async function getSpotifyParams() {
-      try {
-        let data: object = await sendRequest(params);
-        setSpotifyParams(data);
-      } catch (err) {
-        console.log("Oh no! An error occured.");
-      }
-    })();
-
-    (async function getSpotifyAccessToken() {
-      let accessCode = searchParams.get('code');
-      console.log(`code = ${accessCode}`);
+    (async function getSpotifyPodcastEpisodes() {
+      let accessCode = searchParams.get("code");
+      let error = false;
       if (accessCode) {
         let requestAccessTokenParams = { ...defaultAxiosParams };
         requestAccessTokenParams.url =
@@ -74,39 +84,54 @@ const ListenNow: React.FC<{}> = () => {
         let tokens: any;
         try {
           tokens = await sendRequest(requestAccessTokenParams);
+          error = tokens?.status === 'failed';
         } catch (err) {
-          console.log("Oh no! An error occured.");
+          errorList.push({
+            msg: "An unknown error occurred. Please refresh the page and try again.",
+          });
+          error = true;
         }
 
         let requestShowsParams = { ...defaultAxiosParams };
         requestShowsParams.url = requestShowsParams.url + "/api/spotify/shows";
         requestShowsParams.method = "POST";
         requestShowsParams.data = {
-          accessToken: tokens.access_token,
+          accessToken: tokens?.access_token,
         };
 
-        //TODO: MUST CACHE THESE EPISODES SO A NEW REQUEST DOESN'T NEED TO BE MADE
-        try {
-          const { shows } = await sendRequest(requestShowsParams);
-          setPodcastEpisodes(shows.items);
-          //we want items[0].id to include in url https://open.spotify.com/embed/episode/{id}?utm_source=generator
+        if (!error) {
+          try {
+            const { shows } = await sendRequest(requestShowsParams);
+            setPodcastEpisodes(shows.items);
+            //we want items[0].id to include in url https://open.spotify.com/embed/episode/{id}?utm_source=generator
 
-          navigate("/home?state=" + searchParams.get('state'), { replace: true });
-        } catch (err) {
-          console.log("Oh no! An error occurred.");
+            navigate("/home?state=" + searchParams.get("state"), {
+              replace: true,
+            });
+
+            //scroll to the shows as they render
+            showRef.current.scrollIntoView();
+          } catch (err) {
+            errorList.push({
+              msg: "An unknown error occurred. Please refresh the page and try again.",
+            });
+          }
         }
-      } else if (searchParams.get('error')) {
-        setErrors([{ msg: "An error occurred trying to grab the latest podcast episodes." }]);
+      } else if (searchParams.get("error")) {
+        errorList.push({
+          msg: "An error occurred trying to grab the latest podcast episodes.",
+        });
         setShowErrorModal(true);
       }
     })();
-  }, [sendRequest, navigate, searchParams, setErrors]);
+  }, [searchParams, navigate, sendRequest, errorList]);
 
   return (
     <>
-      {isLoading && <Loader />}
+      {loading && <Loader />}
+
       <Modal
-        show={errors || showErrorModal ? true : false}
+        show={showError}
         header="Error"
         type="error"
         footer={
@@ -116,9 +141,10 @@ const ListenNow: React.FC<{}> = () => {
         }
         onClose={closeErrorModal}
       >
-        {errors && <ErrorsList errors={errors} />}
+        <ErrorsList errors={errorListToShow} />
       </Modal>
 
+      {/* Listen now section */}
       <div id="listen-now">
         <RowCol
           rowClasses="row justify-content-center"
@@ -183,7 +209,7 @@ const ListenNow: React.FC<{}> = () => {
             </div>
           </Container>
         </RowCol>
-        <div className="row justify-content-center">
+        <div className="row justify-content-center" ref={showRef}>
           {podcastEpisodes.map((episode: any, index: number) => {
             return (
               <div className="col-10" key={index}>
