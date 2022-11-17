@@ -35,7 +35,7 @@ const MainNav: React.FC<{}> = (props) => {
           <NavLinkList classes="d-none d-sm-flex" navItems={desktopNavLinks} />
           <div className="d-flex d-sm-none">
             <button
-              className="navbar-toggler"
+              className="navbar-toggler transparent-border"
               type="button"
               aria-label="Toggle navigation"
               onClick={toggleMobileNavOpen}

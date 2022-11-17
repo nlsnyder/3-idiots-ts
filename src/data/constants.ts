@@ -1,5 +1,6 @@
-import AlexPicture from "../assets/img/home/hosts/filler-photo-landscape.jpeg";
-import LandonPicture from "../assets/img/home/hosts/filler-photo-landon.jpeg";
+import AlexPicture from "../assets/img/home/hosts/alex-profile-photo.png";
+import LandonPicture from "../assets/img/home/hosts/landon-profile-photo.png";
+import NathanPicture from '../assets/img/home/hosts/nathan-profile-photo.png';
 import {
   faDumbbell,
   faBasketball,
@@ -53,7 +54,7 @@ export const hostProfiles: HostProfile[] = [
   },
   {
     id: 2,
-    image: { src: LandonPicture, alt: "One of the hosts, Nathan" },
+    image: { src: NathanPicture, alt: "One of the hosts, Nathan" },
     name: "Nathan",
     characteristics: {
       primary: "23",
