@@ -7,7 +7,6 @@ import "../../assets/css/hero-section/HeroSection.css";
 import { FeatureImage } from "../../models/interfaces/interfaces";
 
 import {
-  faFacebook,
   faTwitter,
   faSpotify,
 } from "@fortawesome/free-brands-svg-icons";
