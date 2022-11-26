@@ -1,13 +1,13 @@
 import AlexPicture from "../assets/img/home/hosts/alex-profile-photo.png";
 import LandonPicture from "../assets/img/home/hosts/landon-profile-photo.png";
-import NathanPicture from '../assets/img/home/hosts/nathan-profile-photo.png';
+import NathanPicture from '../assets/img/home/hosts/landon-profile-photo.png';
 import {
   faDumbbell,
   faBasketball,
   faMusic,
   faCompactDisc,
   faBaseball,
-  faBookBible,
+  faLandmarkDome,
   faRecordVinyl,
   faRoad,
   faGhost,
@@ -40,7 +40,7 @@ export const hostProfiles: HostProfile[] = [
       },
       {
         icon: faBaseball,
-        label: "Unfortunate suporter of Milwaukee Brewers",
+        label: "Huge suporter of Milwaukee Brewers",
       },
       {
         icon: faDumbbell,
@@ -63,8 +63,8 @@ export const hostProfiles: HostProfile[] = [
     },
     hobbies: [
       {
-        icon: faBookBible,
-        label: "Has regained his virginity",
+        icon: faLandmarkDome,
+        label: "Town Hall 14 in Clash of Clans",
       },
       {
         icon: faRoad,

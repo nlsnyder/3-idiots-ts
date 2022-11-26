@@ -76,12 +76,6 @@ const Footer: React.FC<{}> = (props) => {
           <div className="col-12 col-sm-6 order-1 order-sm-2">
             <ul className="nav-footer">
               <li>
-                <a href="/">Terms and Conditions</a>
-              </li>
-              <li>
-                <a href="/">Privacy Policy</a>
-              </li>
-              <li>
                 <a href="#listen-now">Listen Now</a>
               </li>
               <li>
