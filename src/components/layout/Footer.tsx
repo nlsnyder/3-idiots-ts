@@ -6,7 +6,6 @@ import "../../assets/css/layout/Footer.css";
 import { faJedi, faPodcast } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFacebookF,
   faTwitter,
   faSpotify,
 } from "@fortawesome/free-brands-svg-icons";
@@ -30,10 +29,6 @@ const Footer: React.FC<{}> = (props) => {
                 3 Idiots SW
               </span>
               <div className="d-flex align-items-center gap-4">
-                <FontAwesomeIcon
-                  icon={faFacebookF as IconProp}
-                  className="footer-podcast-icon facebookLogo"
-                />
                 <a
                   rel="noreferrer"
                   target="_blank"
