@@ -113,7 +113,7 @@ const ListenNow: React.FC<{}> = () => {
             setPodcastEpisodes(shows.items);
             //we want items[0].id to include in url https://open.spotify.com/embed/episode/{id}?utm_source=generator
 
-            navigate("/home?state=" + searchParams.get("state"), {
+            navigate("/home", {
               replace: true,
             });
 
