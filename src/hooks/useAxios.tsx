@@ -8,15 +8,15 @@ axios.defaults.baseURL = "https://localhost:4000";
 
 const useAxios = (): {
   isLoading: boolean;
-  errors: ApiRequestError[];
+  errors: ApiRequestError[] | null;
   sendRequest: (req: BaseAxiosRequest) => Promise<any>;
   clearError: () => void;
 } => {
   const [isLoading, setIsLoading] = useState(false);
-  const [errors, setError] = useState<ApiRequestError[]>([]);
+  const [errors, setError] = useState<ApiRequestError[] | null>([]);
 
   const clearError = useCallback(() => {
-    setError([]);
+    setError(null);
   }, []);
 
   const sendRequest = useCallback(async (req: BaseAxiosRequest) => {
@@ -27,9 +27,11 @@ const useAxios = (): {
       //make request with req params passed in
       const res = await axios.request(req);
       setIsLoading(false);
-      setError([]);
+      setError(null);
+      console.log(res);
       return res.data;
     } catch (err: any) {
+      console.log('err', err);
       const errors = err?.response?.data?.errors;
       if (errors) {
         setError(errors);

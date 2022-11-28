@@ -44,9 +44,16 @@ const ListenNow: React.FC<{}> = () => {
     }
   );
 
-  let errorListToShow = errors.concat(errorList);
+  let showError : boolean;
+  let errorListToShow;
+  if (errors) {
+    errorListToShow = errors.concat(errorList);
+    showError = showErrorModal || errors.length > 0;
+  } else {
+    errorListToShow = errorList;
+    showError = showErrorModal;
+  }
   let loading = clientParams.isLoading || isLoading;
-  let showError = showErrorModal || errors.length > 0;
 
   const closeErrorModal = () => {
     setShowErrorModal(false);
@@ -71,6 +78,7 @@ const ListenNow: React.FC<{}> = () => {
   useEffect(() => {
     (async function getSpotifyPodcastEpisodes() {
       let accessCode = searchParams.get("code");
+
       let error = false;
       if (accessCode) {
         let requestAccessTokenParams = { ...defaultAxiosParams };
