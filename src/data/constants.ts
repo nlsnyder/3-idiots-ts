@@ -29,7 +29,7 @@ export const hostProfiles: HostProfile[] = [
     image: { src: LandonPicture, alt: "One of the hosts, Landon" },
     name: "Landon",
     characteristics: {
-      primary: "23",
+      primary: "24",
       secondary: "Madison",
       tertiary: "UW LaCrosse",
     },
