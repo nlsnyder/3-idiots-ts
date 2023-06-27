@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/img/navigation/logoipsum-logo-27.svg";
+import logo from "../../assets/img/navigation/3IdiotsStarWars_transparent.png";
 import styles from '../../assets/css/navigation/MainNav.module.css';
 import "../../assets/css/navigation/MobileNav.css";
 
@@ -30,7 +30,7 @@ const MainNav: React.FC<{}> = (props) => {
       <Header>
         <nav className={`navbar py-3`}>
           <a href="/">
-            <img src={logo} alt="3 idiots logo" />
+            <img className={styles.logo} src={logo} alt="3 idiots logo" />
           </a>
           <NavLinkList classes="d-none d-sm-flex" navItems={desktopNavLinks} />
           <div className="d-flex d-sm-none">

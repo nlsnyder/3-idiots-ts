@@ -78,7 +78,6 @@ const ListenNow: React.FC<{}> = () => {
   useEffect(() => {
     (async function getSpotifyPodcastEpisodes() {
       let accessCode = searchParams.get("code");
-
       let error = false;
       if (accessCode) {
         let requestAccessTokenParams = { ...defaultAxiosParams };

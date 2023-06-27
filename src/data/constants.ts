@@ -1,6 +1,6 @@
 import AlexPicture from "../assets/img/home/hosts/alex-profile-photo.png";
 import LandonPicture from "../assets/img/home/hosts/landon-profile-photo.png";
-import NathanPicture from '../assets/img/home/hosts/landon-profile-photo.png';
+import NathanPicture from '../assets/img/home/hosts/nathan-profile-photo.png';
 import {
   faDumbbell,
   faBasketball,
@@ -54,34 +54,6 @@ export const hostProfiles: HostProfile[] = [
   },
   {
     id: 2,
-    image: { src: NathanPicture, alt: "One of the hosts, Nathan" },
-    name: "Nathan",
-    characteristics: {
-      primary: "23",
-      secondary: "Madison",
-      tertiary: "UW Madison",
-    },
-    hobbies: [
-      {
-        icon: faLandmarkDome,
-        label: "Town Hall 14 in Clash of Clans",
-      },
-      {
-        icon: faRoad,
-        label: "Designs roads as civil engineer",
-      },
-      {
-        icon: faGhost,
-        label: "Easily frightened by scary movies",
-      },
-      {
-        icon: faDog,
-        label: "Co-owner of Mabel the Golden Doodle",
-      },
-    ],
-  },
-  {
-    id: 3,
     image: { src: AlexPicture, alt: "One of the hosts, Alex" },
     name: "Alex",
     characteristics: {
@@ -108,6 +80,34 @@ export const hostProfiles: HostProfile[] = [
       },
     ],
   },
+  {
+    id: 3,
+    image: { src: NathanPicture, alt: "One of the hosts, Nathan" },
+    name: "Nathan",
+    characteristics: {
+      primary: "23",
+      secondary: "Madison",
+      tertiary: "UW Madison",
+    },
+    hobbies: [
+      {
+        icon: faLandmarkDome,
+        label: "Town Hall 14 in Clash of Clans",
+      },
+      {
+        icon: faRoad,
+        label: "Designs roads as civil engineer",
+      },
+      {
+        icon: faGhost,
+        label: "Easily frightened by scary movies",
+      },
+      {
+        icon: faDog,
+        label: "Co-owner of Mabel the Golden Doodle",
+      },
+    ],
+  }
 ];
 
 export const HeardFromOptions: SelectOption[] = [
